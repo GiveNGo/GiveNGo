@@ -2,11 +2,19 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es2015", "esnext.asynciterable"],
+    "outDir": "./build",
     "jsx": "react-native",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "esModuleInterop": true,
     "types": ["jest"]
-  }
+  },
+  "include": ["./src/**/*"],
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }
