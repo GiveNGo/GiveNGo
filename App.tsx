@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import Routes from './src/client/Routes';
 
 // Kitten UI imports
 import * as eva from '@eva-design/eva';
@@ -18,7 +17,6 @@ export default function App() {
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={eva.light}>
         <Text>Open up App.tsx to start working on your app!</Text>
-        <Routes />
       </ApplicationProvider>
     </>
   );
