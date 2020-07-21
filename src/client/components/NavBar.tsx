@@ -22,14 +22,14 @@ const User = () => (
 
 const NavBar = () => (
   <TabBar>
-    <Link to="/dashboard">
-      <Tab title="Dashboard" />
+    <Link to="/">
+      <Tab title="Signout" />
     </Link>
-    <Link to="/explore">
-      <Tab title="Explore" />
+    <Link to="/messages">
+      <Tab title="Chat" />
     </Link>
-    <Link to="/request">
-      <Tab title="Request" />
+    <Link to="/user">
+      <Tab title="User" />
     </Link>
   </TabBar>
 );
