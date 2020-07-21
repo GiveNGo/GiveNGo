@@ -6,7 +6,7 @@ import { Link } from 'react-router-native';
 const LoginPage = () => {
   return (
     <Layout>
-      <Link to="/signup">
+      <Link to="/dashboard">
         <Button>Sign Up</Button>
       </Link>
     </Layout>
