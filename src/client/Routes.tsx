@@ -19,7 +19,7 @@ export default (props: any) => {
           <Route path="/signup" component={SignupPage} />
           <Route path="/explore" component={ExplorePage} />
           <Route path="/request" component={RequestPage} />
-          <Route path="/:user" component={ProfilePage} />
+          <Route path="/user" component={ProfilePage} />
           <Route path="/messages" component={ChatPage} />
           <Route path="/dashboard" component={DashboardPage} />
           <Route path="/conduct" component={CodeOfConductPage} />
