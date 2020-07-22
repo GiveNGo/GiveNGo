@@ -1,14 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View } from "react-native";
-import { Layout, Text } from '@ui-kitten/components';
 
-const DashboardPage = () => {
+import { Layout, Divider, Text } from '@ui-kitten/components';
+import TaskCard from '../components/TaskCard';
+import RequestCard from '../components/RequestCard';
+
+export default function DashboardPage() {
   return (
-    <Layout>
-      <Text>in Dashboard</Text>
+    <Layout
+      style={{
+        flex: 1,
+      }}
+    >
+      <Layout
+        style={{
+          flex: 1,
+          paddingLeft: 10,
+          paddingRight: 10,
+        }}
+      >
+        <Layout>
+          <Text category='h6'>Current Tasks:</Text>
+          <Divider />
+          <TaskCard />
+        </Layout>
+        <Layout>
+          <Text category='h6'>Current Requests:</Text>
+          <Divider />
+          <RequestCard />
+        </Layout>
+      </Layout>
     </Layout>
   );
-};
-
-export default DashboardPage;
+}
