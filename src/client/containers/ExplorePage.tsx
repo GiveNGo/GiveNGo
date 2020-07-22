@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MapView from "react-native-maps";
+import { Layout } from '@ui-kitten/components';
 import RequestPin from '../components/RequestPin';
 
 const ExplorePage = () => {

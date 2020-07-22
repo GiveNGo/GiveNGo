@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import { Icon, Text, Button } from '@ui-kitten/components';
+import { Text, Button } from '@ui-kitten/components';
 import { Marker } from "react-native-maps";
 
 
