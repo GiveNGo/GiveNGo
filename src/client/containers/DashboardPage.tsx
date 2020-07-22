@@ -2,23 +2,20 @@ import React from 'react';
 
 import { Layout, Divider, Text } from '@ui-kitten/components';
 import TaskCard from '../components/TaskCard';
+import RequestCard from '../components/RequestCard';
 
 export default function DashboardPage() {
   return (
     <Layout
       style={{
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white-ish',
       }}
     >
       <Layout
         style={{
           flex: 1,
-          alignSelf: 'center',
-          paddingTop: 100,
-          paddingBottom: 100,
+          paddingLeft: 10,
+          paddingRight: 10,
         }}
       >
         <Layout>
@@ -29,7 +26,7 @@ export default function DashboardPage() {
         <Layout>
           <Text category='h6'>Current Requests:</Text>
           <Divider />
-          <TaskCard />
+          <RequestCard />
         </Layout>
       </Layout>
     </Layout>
