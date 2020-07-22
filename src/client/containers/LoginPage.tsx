@@ -1,16 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, Layout } from '@ui-kitten/components';
-import { Link } from 'react-router-native';
+import { View } from 'react-native';
+import { Button, Layout, Text } from '@ui-kitten/components';
 
-const LoginPage = () => {
+export default function LoginPage({ navigation }: any): React.ReactElement {
   return (
     <Layout>
-      <Link to="/signup">
-        <Button>Sign Up</Button>
-      </Link>
+      <View accessible={true}>
+        <Button onPress={() => navigation.navigate('Signup')}>Sign Up</Button>
+      </View>
     </Layout>
   );
-};
-
-export default LoginPage;
+}

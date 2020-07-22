@@ -1,5 +1,5 @@
 import React from 'react';
-import { NativeRouter, Route, Switch, BackButton } from 'react-router-native';
+// import { NativeRouter, Route, Switch, BackButton } from 'react-router-native';
 
 import LoginPage from './containers/LoginPage';
 import SignupPage from './containers/SignupPage';

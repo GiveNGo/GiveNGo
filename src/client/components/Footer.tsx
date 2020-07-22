@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-native';
+// import { Link } from 'react-router-native';
 import {
   BottomNavigation,
   BottomNavigationTab,
