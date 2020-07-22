@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Icon, List, ListItem, Layout } from "@ui-kitten/components";
-import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
+import { Button, List, ListItem, Layout, Avatar } from "@ui-kitten/components";
+import { StyleSheet, ScrollView, View, Text } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
 /**
@@ -15,18 +15,13 @@ const mockData = new Array(8).fill({
 
 const ProfileIcon = () => {
   return (
-    <Image
-      source={require("../../../assets/alan.jpg")}
-      style={{ width: 30, height: 30, borderRadius: 5 }}
-    />
+    <Avatar shape="rounded" source={require("../../../assets/alan.jpg")} />
   );
 };
 
-const HeartIcon = (props: any) => <Icon {...props} name="heart" />;
-
 export default function ChatPage({ navigation }: any) {
   const renderItemAccessory = (props: any) => (
-    <Button size="tiny" accessoryLeft={HeartIcon} status="danger">
+    <Button size="tiny" status="danger">
       Delete
     </Button>
   );
