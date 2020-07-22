@@ -32,7 +32,6 @@ const RequestPin = (props:any) => {
         }}>
         <Button 
         style={{ alignSelf: "flex-start" }}
-        status='success'
         appearance='ghost'
         onPress={onPressButton}>
         X
@@ -42,7 +41,6 @@ const RequestPin = (props:any) => {
         >Flour</Text>
         {/* <Button onPress={() => navigation.navigate('Dashboard')} title='Give'/> */}
         <Button 
-        status='success'
         appearance='outline'
         onPress={onPressButton}>
        Give

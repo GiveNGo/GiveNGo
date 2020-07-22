@@ -7,8 +7,7 @@ export default function LoginPage({ navigation }: any): React.ReactElement {
   return (
     <Layout>
       <Button 
-      status='success'
-      onPress={() => navigation.navigate(' ')}>Login</Button>
+      onPress={() => navigation.navigate("Give'N'Go", { screen: 'Home' })}>Login</Button>
     </Layout>
   );
 }

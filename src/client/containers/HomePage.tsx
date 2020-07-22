@@ -3,7 +3,7 @@ import React from 'react';
 import { View } from "react-native";
 import { Layout, Text } from '@ui-kitten/components';
 
-const DashboardPage = () => {
+const HomePage = () => {
   return (
     <Layout>
       <Text>in Dashboard</Text>
@@ -11,4 +11,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default HomePage;

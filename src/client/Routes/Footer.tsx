@@ -1,9 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BottomNavigation, BottomNavigationTab } from '@ui-kitten/components';
-import { DashboardRouter } from './DashboardRouter';
-import { ExploreRouter } from './ExploreRouter';
-import { RequestRouter } from './RequestRouter';
+import { BottomNavigation, BottomNavigationTab, Icon } from '@ui-kitten/components';
+import HomePage from '../containers/HomePage';
 import ExplorePage from '../containers/ExplorePage';
 import RequestPage from '../containers/RequestPage';
 import ChatPage from '../containers/ChatPage';
@@ -11,16 +9,42 @@ import ProfilePage from '../containers/ProfilePage';
 
 const Bottom = createBottomTabNavigator();
 
+const HomeIcon = (props:any) => (
+  <Icon {...props} name='home-outline'/>
+);
+const ExploreIcon = (props:any) => (
+  <Icon {...props} name='map-outline'/>
+);
+const RequestIcon = (props:any) => (
+  <Icon {...props} name='gift-outline'/>
+);
+const ChatIcon = (props:any) => (
+  <Icon {...props} name='message-square-outline'/>
+);
+const ProfileIcon = (props:any) => (
+  <Icon {...props} name='person-outline'/>
+);
+
 const BottomTabBar = (props: JSX.IntrinsicAttributes & { navigation: any; state: any; }) => {
   return(
     <BottomNavigation
       selectedIndex={props.state.index}
       onSelect={index => props.navigation.navigate(props.state.routeNames[index])}>
-      <BottomNavigationTab title='Home'/>
-      <BottomNavigationTab title='Explore'/>
-      <BottomNavigationTab title='Request'/>
-      <BottomNavigationTab title='Chat'/>
-      <BottomNavigationTab title='Profile'/>
+      <BottomNavigationTab 
+      icon={HomeIcon}
+      title='Home'/>
+      <BottomNavigationTab 
+      icon={ExploreIcon}
+      title='Explore'/>
+      <BottomNavigationTab 
+      icon={RequestIcon}
+      title='Request'/>
+      <BottomNavigationTab 
+      icon={ChatIcon} 
+      title='Chat'/>
+      <BottomNavigationTab 
+      icon={ProfileIcon} 
+      title='Profile'/>
     </BottomNavigation>
   )
 };
