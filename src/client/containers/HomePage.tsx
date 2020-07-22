@@ -1,10 +1,9 @@
 import React from 'react';
-
 import { Layout, Divider, Text } from '@ui-kitten/components';
 import TaskCard from '../components/TaskCard';
 import RequestCard from '../components/RequestCard';
 
-export default function DashboardPage() {
+export default function HomePage() {
   return (
     <Layout
       style={{
@@ -31,4 +30,4 @@ export default function DashboardPage() {
       </Layout>
     </Layout>
   );
-}
+};
