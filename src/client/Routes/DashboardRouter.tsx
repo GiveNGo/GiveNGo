@@ -3,7 +3,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { TabBar, Tab} from '@ui-kitten/components';
 import ChatPage from '../containers/ChatPage';
 import ProfilePage from '../containers/ProfilePage';
-import DashboardPage from '../containers/DashboardPage';
+import DashboardPage from '../containers/HomePage';
 
 const Top = createMaterialTopTabNavigator();
 
