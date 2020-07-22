@@ -13,8 +13,13 @@
     "validate": "yarn test && yarn lint && tsc --noEmit"
   },
   "dependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.24",
+    "dotenv": "^8.2.0",
     "expo": "~38.0.8",
     "expo-status-bar": "^1.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.25",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
