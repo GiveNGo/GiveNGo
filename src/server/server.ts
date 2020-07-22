@@ -37,6 +37,8 @@ mongoose.connection.on('error', (err) =>{
   console.log('ERROR CONNECTING TO DATABASE: ', err);
 });
 
+app.use('/signup')
+
 // Global Error handler
 app.use(
   (
