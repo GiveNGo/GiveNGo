@@ -22,11 +22,9 @@ const ProfileIcon = () => {
   );
 };
 
-const HeartIcon = (props: any) => <Icon {...props} name="heart" />;
-
 export default function ChatPage({ navigation }: any) {
   const renderItemAccessory = (props: any) => (
-    <Button size="tiny" accessoryLeft={HeartIcon} status="danger">
+    <Button size="tiny" status="danger">
       Delete
     </Button>
   );
