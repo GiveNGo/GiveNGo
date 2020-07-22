@@ -1,8 +1,20 @@
 import React, { useState } from "react";
-import MapView from "react-native-maps";
+import MapView, { Marker, Callout } from "react-native-maps";
+import { View } from "react-native";
+import { Text, Button } from '@ui-kitten/components';
 import RequestPin from '../components/RequestPin';
 
-const ExplorePage = () => {
+export default function ExplorePage ({ navigation }: any): React.ReactElement {
+  const [text, setText] = useState(false);
+
+  const onPressButton = () => {
+    if(text){
+      return setText(false)
+    } else {
+      return setText(true)
+    }
+  }
+
   const [region, setRegion] = useState({
     latitude: 52.5200066,
     longitude: 13.404954,
@@ -16,9 +28,39 @@ const ExplorePage = () => {
       region={region}
       onRegionChangeComplete={region => setRegion(region)}
     >
-      <RequestPin coordinate={{ latitude: 52.5200066, longitude: 13.404954 }} />
+      <Marker
+        coordinate={{ latitude: 52.5200066, longitude: 13.404954 }}
+        pinColor="blue">
+          <Callout>
+            <View 
+              style={{
+                display:'flex', 
+                flexDirection:'column',  
+                justifyContent:'space-between', 
+                height: 200,
+                width: 200,
+                backgroundColor: '#fff',
+                borderColor: "#eee",
+                borderRadius: 5,
+                elevation: 10
+            }}>
+            {/* <Button 
+            style={{ alignSelf: "flex-start" }}
+            appearance='ghost'
+            onPress={onPressButton}>
+            X
+            </Button> */}
+            <Text
+              style={{ alignSelf: "center" }}
+            >Flour</Text>
+            <Button 
+              appearance='outline'
+              onPress={() => navigation.navigate('Home')}
+              // onPress={() => alert('test press')}
+            >Give</Button>
+          </View>
+        </Callout>
+      </Marker>
     </MapView>
   );
 };
-
-export default ExplorePage;
