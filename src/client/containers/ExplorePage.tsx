@@ -2,19 +2,9 @@ import React, { useState } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
 import { View } from "react-native";
 import { Text, Button } from '@ui-kitten/components';
-import RequestPin from '../components/RequestPin';
+
 
 export default function ExplorePage ({ navigation }: any): React.ReactElement {
-  const [text, setText] = useState(false);
-
-  const onPressButton = () => {
-    if(text){
-      return setText(false)
-    } else {
-      return setText(true)
-    }
-  }
-
   const [region, setRegion] = useState({
     latitude: 52.5200066,
     longitude: 13.404954,
@@ -44,19 +34,19 @@ export default function ExplorePage ({ navigation }: any): React.ReactElement {
                 borderRadius: 5,
                 elevation: 10
             }}>
-            {/* <Button 
+            <Button 
             style={{ alignSelf: "flex-start" }}
             appearance='ghost'
-            onPress={onPressButton}>
+            // onPress={onPressButton}
+            >
             X
-            </Button> */}
+            </Button> 
             <Text
               style={{ alignSelf: "center" }}
             >Flour</Text>
             <Button 
               appearance='outline'
-              onPress={() => navigation.navigate('Home')}
-              // onPress={() => alert('test press')}
+              onPress={() => navigation.navigate("Give'N'Go", { screen: 'Home' })}
             >Give</Button>
           </View>
         </Callout>

@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -7,10 +6,7 @@ import { LoginRouter } from './src/client/Routes/LoginRouter';
 
 // Kitten UI imports
 import * as eva from '@eva-design/eva';
-import {
-  ApplicationProvider,
-  IconRegistry,
-} from '@ui-kitten/components';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
 const Stack = createStackNavigator();
