@@ -2,8 +2,8 @@ import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TabBar, Tab} from '@ui-kitten/components';
 import LoginPage from '../containers/LoginPage';
-import SignupPage from '../containers/SignupPage';
-import AboutUsPage from '../containers/AboutUs';
+import AboutUsPage from '../containers/AboutUsPage';
+import { SignUpRouter } from './SignUpRouter';
 
 const Top = createMaterialTopTabNavigator();
 
@@ -23,7 +23,7 @@ export const LoginRouter = () => {
   return(
     <Top.Navigator tabBar={(props: JSX.IntrinsicAttributes & { navigation: any; state: any; }) => <TopTabBar {...props} />}>
       <Top.Screen name='Login' component={LoginPage}/>
-      <Top.Screen name='Sign Up' component={SignupPage}/>
+      <Top.Screen name='Sign Up' component={SignUpRouter}/>
       <Top.Screen name='About Us' component={AboutUsPage}/>
     </Top.Navigator>
   )
