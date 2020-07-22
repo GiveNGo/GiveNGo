@@ -8,13 +8,15 @@ export default function RequestPage({ navigation }: any): React.ReactElement {
 
   return (
     <Layout>
-      <View>
-        <Text style={{ margin: 1 }} category="h2">
-          Submit your request for a donation from your neighbors!
-        </Text>
-      </View>
+      <Text style={styles.text} category="s1">
+        Submit your request for a donation from your neighbors!
+      </Text>
       <Card style={styles.card}>
-        <Input placeholder="Enter your request..." />
+        <Input
+          multiline={true}
+          textStyle={{ minHeight: 100 }}
+          placeholder="Enter your request..."
+        />
         <Button
           size="small"
           status="basic"
@@ -29,8 +31,12 @@ export default function RequestPage({ navigation }: any): React.ReactElement {
 
 const styles = StyleSheet.create({
   card: {
-    flex: 1,
+    // flex: 1,
     margin: 2,
-    height: 400,
+    height: 200,
+  },
+  text: {
+    margin: 10,
+    textAlign: 'center',
   },
 });
