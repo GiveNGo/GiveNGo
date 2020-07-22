@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import MapView from "react-native-maps";
-import { Layout } from '@ui-kitten/components';
 import RequestPin from '../components/RequestPin';
 
 const ExplorePage = () => {
@@ -17,7 +16,7 @@ const ExplorePage = () => {
       region={region}
       onRegionChangeComplete={region => setRegion(region)}
     >
-      <RequestPin coordinate={{ latitude: 52.5200066, longitude: 13.404954 }}/>
+      <RequestPin coordinate={{ latitude: 52.5200066, longitude: 13.404954 }} />
     </MapView>
   );
 };

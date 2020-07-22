@@ -4,14 +4,14 @@ import { Text, Button } from '@ui-kitten/components';
 import { Marker } from "react-native-maps";
 
 
-const RequestPin = (props: { coordinate: import("react-native-maps").LatLng | import("react-native-maps").AnimatedRegion; }) => {
+const RequestPin = (props:any) => {
   const [text, setText] = useState(false);
 
   const onPressButton = () => {
     if(text){
-      setText(false)
+      return setText(false)
     } else {
-      setText(true)
+      return setText(true)
     }
   }
 

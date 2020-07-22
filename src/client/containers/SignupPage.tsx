@@ -6,7 +6,7 @@ import { Button, Layout, Text } from '@ui-kitten/components';
 export default function SignupPage({ navigation }: any): React.ReactElement {
   return (
     <Layout>
-        <Button onPress={() => navigation.navigate("Give'N'Go", { screen: 'User' })}>Login</Button>
+        <Button onPress={() => navigation.navigate(' ')}>Sign Up</Button>
     </Layout>
   );
 }

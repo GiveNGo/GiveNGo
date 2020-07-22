@@ -6,7 +6,7 @@ const CodeOfConductPage = ({ navigation }: any) => {
 
   return (
     <Layout>
-      <Button onPress={() => navigation.navigate('Dashboard')}>Login</Button>
+      <Button onPress={() => navigation.navigate("Give'N'Go", { screen: 'User' })}>Accept</Button>
     </Layout>
   );
 };
