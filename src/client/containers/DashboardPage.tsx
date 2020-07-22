@@ -1,7 +1,7 @@
 import React from 'react';
-import { View } from 'react-native';
 
 import { Layout, Divider, Text } from '@ui-kitten/components';
+import TaskCard from '../components/TaskCard';
 
 export default function DashboardPage() {
   return (
@@ -13,7 +13,7 @@ export default function DashboardPage() {
         backgroundColor: 'white-ish',
       }}
     >
-      <View
+      <Layout
         style={{
           flex: 1,
           alignSelf: 'center',
@@ -21,9 +21,17 @@ export default function DashboardPage() {
           paddingBottom: 100,
         }}
       >
-        <Text category='h6'>UI Kitten</Text>
-        <Divider />
-      </View>
+        <Layout>
+          <Text category='h6'>Current Tasks:</Text>
+          <Divider />
+          <TaskCard />
+        </Layout>
+        <Layout>
+          <Text category='h6'>Current Requests:</Text>
+          <Divider />
+          <TaskCard />
+        </Layout>
+      </Layout>
     </Layout>
   );
 }
