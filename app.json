@@ -3,6 +3,7 @@
     "name": "giveAndGo",
     "slug": "giveAndGo",
     "version": "1.0.0",
+    "sdkVersion": "35.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -13,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

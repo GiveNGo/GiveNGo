@@ -1,18 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Layout, Text } from '@ui-kitten/components';
-// import { Link } from 'react-router-native';
+import React, { useEffect, useState } from 'react';
+import { Button, Layout, Text, Input, Card } from '@ui-kitten/components';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 
-const RequestPage = () => {
+export default function RequestPage({ navigation }: any): React.ReactElement {
+  const [requests, setRequests] = useState([]);
+  const [accepted, setAccepted] = useState(false);
+
+  const getRequests = async () => {};
+
   return (
     <Layout>
       <NavBar />
-      <Text>in Request</Text>
+      <Card>
+        <Input placeholder="Enter your request..." />
+        <Button size="small" status="basic">
+          Submit
+        </Button>
+      </Card>
       <Footer />
     </Layout>
   );
-};
-
-export default RequestPage;
+}

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-native';
 import { TabBar, Tab, Layout, Text } from '@ui-kitten/components';
 
 const Signout = () => (
