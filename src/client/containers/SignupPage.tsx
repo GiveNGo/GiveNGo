@@ -1,17 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, Layout } from '@ui-kitten/components';
-// import { Redirect } from 'react-router-native';
+import { View } from 'react-native';
+import { Button, Layout, Text } from '@ui-kitten/components';
 
-const LoginPage = () => {
-  const handleOnPress = () => {
-    <Redirect to="/conduct" />;
-  };
+export default function SignupPage({ navigation }: any): React.ReactElement {
   return (
     <Layout>
-      <Button onPress={handleOnPress}>Sign Up</Button>
+        <Button onPress={() => navigation.navigate(' ')}>Sign Up</Button>
     </Layout>
   );
-};
-
-export default LoginPage;
+}

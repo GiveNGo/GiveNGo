@@ -1,15 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Button, Layout } from '@ui-kitten/components';
-// import { Redirect } from 'react-router-native';
 
-const CodeOfConductPage = () => {
-  const handleOnPress = () => {
-    <Redirect to="/dashboard" />;
-  };
+const CodeOfConductPage = ({ navigation }: any) => {
+
   return (
     <Layout>
-      <Button onPress={handleOnPress}>in Code Of Conduct</Button>
+      <Button onPress={() => navigation.navigate("Give'N'Go", { screen: 'User' })}>Accept</Button>
     </Layout>
   );
 };
