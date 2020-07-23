@@ -62,9 +62,9 @@ export default function RequestPage({ navigation }: any): React.ReactElement {
     navigation.navigate("Give'N'Go", { screen: 'Home' });
   };
 
-  useEffect(() => {
-    addRequest();
-  }, []);
+  // useEffect(() => {
+  //   addRequest();
+  // }, []);
 
   return (
     <Layout>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   ListItem,
@@ -6,13 +6,13 @@ import {
   Avatar,
   Divider,
   Text,
-} from "@ui-kitten/components";
-import { StyleSheet, View } from "react-native";
-import Swipeable from "react-native-gesture-handler/Swipeable";
-import { FlatList } from "react-native-gesture-handler";
-import flatListData from "../../../data/flatListData";
-import * as types from "../Reducer/actionsTypes";
-import { useDispatch, useSelector } from "react-redux";
+} from '@ui-kitten/components';
+import { StyleSheet, View } from 'react-native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { FlatList } from 'react-native-gesture-handler';
+import flatListData from '../../../data/flatListData';
+import * as types from '../Reducer/actionsTypes';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setUserId,
   setUserName,
@@ -24,8 +24,8 @@ import {
   setUserTasks,
   setAppTasks,
   setCurrentTask,
-} from "../Reducer/actions";
-import { black } from "react-native-paper/lib/typescript/src/styles/colors";
+} from '../Reducer/actions';
+import { black } from 'react-native-paper/lib/typescript/src/styles/colors';
 
 /**
  * @param props - React Native Icons
@@ -38,7 +38,7 @@ const ProfileIcon = () => {
   const state = useSelector((state: any) => state);
 
   return (
-    <Avatar shape="rounded" source={require("../../../assets/alan.jpg")} />
+    <Avatar shape="rounded" source={require('../../../assets/alan.jpg')} />
   );
 };
 
@@ -52,13 +52,13 @@ export default function ChatPage({ navigation }: any) {
   const RightActions = () => {
     return (
       <View
-        style={{ flex: 1, backgroundColor: "red", justifyContent: "center" }}
+        style={{ flex: 1, backgroundColor: 'red', justifyContent: 'center' }}
       >
         <Text
           style={{
-            color: "white",
+            color: 'white',
             paddingHorizontal: 300,
-            fontWeight: "600",
+            fontWeight: '600',
           }}
         >
           Delete?
@@ -74,7 +74,7 @@ export default function ChatPage({ navigation }: any) {
         description={`${item.task}`}
         accessoryLeft={ProfileIcon}
         accessoryRight={renderItemAccessory}
-        onPress={() => navigation.navigate("Chat Feed")}
+        onPress={() => navigation.navigate('Chat Feed')}
       />
     </Swipeable>
   );
@@ -82,7 +82,7 @@ export default function ChatPage({ navigation }: any) {
   return (
     <React.Fragment>
       <Layout
-        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         level="3"
       >
         <View>
@@ -106,18 +106,18 @@ export default function ChatPage({ navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     maxHeight: 800,
-    width: "95%",
+    width: '95%',
   },
   details: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     height: 70,
     marginVertical: 0,
-    backgroundColor: "rgba(122, 111, 111, 0.5)",
+    backgroundColor: 'rgba(122, 111, 111, 0.5)',
   },
   title: {
-    color: "rgb(51, 102, 255)",
+    color: 'rgb(51, 102, 255)',
     marginTop: 20,
     margin: 10,
   },
@@ -127,10 +127,10 @@ const styles = StyleSheet.create({
     marginBottom: 14,
     borderWidth: 0.5,
     borderRadius: 5,
-    shadowColor: "black",
+    shadowColor: 'black',
   },
   scrollView: {
-    backfaceVisibility: "visible",
+    backfaceVisibility: 'visible',
     marginHorizontal: 20,
   },
   textAction: {
