@@ -25,7 +25,7 @@ authController.signUpUser = async (
     email: email,
     password: encrypted,
     karma: 0,
-    // tasks: {}
+    tasks: []
   })
 
   res.locals.newUser = newUser;
@@ -54,7 +54,7 @@ authController.loginUser = async (
     "username": username,
   })
 
-  if(!possibleUser) res.send('USER DOES NOT EXIST')
+  if(!possibleUser) res.send('USER DOES NOT EXIST');
 
   res.locals.possibleUser = possibleUser
 
@@ -63,21 +63,18 @@ authController.loginUser = async (
   );
 
   if(password == dbPwd){
-    res.send('SUCCESSFUL AUTHENTICATION')
+    res.send('SUCCESSFUL AUTHENTICATION');
   } else {
     return next();
   }
 
-
   // error handling
-  // if (!(decrypted || username)){
-  //   return next({
-  //     log: `Error caught in authContoller.loginUser: Missing ${username}, decrypt: ${Boolean(decrypted)}`,
-  //     msg: { err: 'authController.loginUser: ERROR: Check server logs for details'}
-  //   });
-  // }
-
-  // return next();
+  if (!(dbPwd || username || password)){
+    return next({
+      log: `Error caught in authContoller.loginUser: Missing ${username}, decrypt: ${Boolean(decrypted)}`,
+      msg: { err: 'authController.loginUser: ERROR: Check server logs for details'}
+    });
+  }
 };
 
 module.exports = authController;

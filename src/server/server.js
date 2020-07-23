@@ -3,6 +3,7 @@ exports.__esModule = true;
 var express = require("express");
 var signupRoute = require('./routes/signupRoute');
 var loginRoute = require('./routes/loginRoute');
+var requestController = require('./controllers/requestController')
 // require('dotenv').config();
 var mongoose = require('mongoose');
 var app = express();
@@ -21,6 +22,24 @@ app.use('/login', loginRoute);
 //   res.status(200).json(res.locals.possibleUser)
 // });
 // CONNECT TO MONGO DB
+
+app.get('/tasks', requestController.getTasks, (req, res) => {
+  return res.status(200).json(res.locals.tasks);
+});
+// postRequest route
+app.post(
+  '/request',
+  requestController.postRequest,
+  (req, res) => {
+    return res.status(200).json(res.locals.tasks);
+  }
+);
+
+app.delete('/tasks/:id', requestController.deleteTask, (req,res) => {
+  return res.status(200).json(res.locals.tasks)
+});
+
+
 mongoose.connect('mongodb+srv://louis-givengo:evee3833@givengo-data.rw3gb.azure.mongodb.net/givengo-data?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on('connected', function () {
     console.log('connected to database!');
@@ -44,3 +63,6 @@ app.use(function (err, req, res, next) {
 });
 var PORT = 3001;
 app.listen(PORT, function () { return console.log("Server running on port " + PORT); });
+
+
+//ENVIRONMENT VARIABLES
