@@ -1,0 +1,18 @@
+export const SET_USER_ID = 'SET_USER_ID';
+export const SET_USER_NAME = 'SET_USER_NAME';
+export const SET_ANONYMOUS = 'SET_ANONYMOUS';
+export const SET_EMAIL = 'SET_EMAIL';
+export const SET_ADDRESS = 'SET_ADDRESS';
+export const SET_KARMA = 'SET_KARMA';
+export const ADD_KARMA = 'ADD_KARMA';
+export const SET_USER_REQUESTS = 'SET_USER_REQUESTS';
+export const ADD_USER_REQUESTS = 'ADD_USER_REQUESTS';
+export const REMOVE_USER_REQUESTS = 'REMOVE_USER_REQUESTS';
+export const SET_USER_TASKS = 'SET_USER_TASKS';
+export const ADD_USER_TASKS = 'REMOVE_USER_TASKS';
+export const REMOVE_USER_TASKS = 'REMOVE_USER_TASKS';
+export const SET_APP_TASKS = 'SET_APP_TASKS';
+export const ADD_APP_TASKS = 'ADD_APP_TASKS';
+export const REMOVE_APP_TASKS = 'REMOVE_APP_TASKS';
+export const SET_CURRENT_TASK = 'SET_CURRENT_TASK';
+

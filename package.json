@@ -18,11 +18,13 @@
     "@react-navigation/stack": "^5.7.1",
     "@types/express": "^4.17.7",
     "@types/node": "^14.0.24",
+    "@types/react-redux": "^7.1.9",
     "@ui-kitten/components": "^5.0.0",
     "@ui-kitten/eva-icons": "^5.0.0",
     "expo": "~38.0.8",
     "expo-status-bar": "^1.0.2",
     "express": "^4.17.1",
+    "immer": "^7.0.5",
     "mongoose": "^5.9.25",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
@@ -34,7 +36,11 @@
     "react-native-screens": "^2.9.0",
     "react-native-svg": "^12.1.0",
     "react-native-tab-view": "^2.15.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
