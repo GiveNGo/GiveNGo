@@ -2,21 +2,20 @@ import React, { useState } from "react";
 import { View, StyleSheet } from 'react-native';
 import { ListItem, Button, Input, Toggle, Text, Card, Icon } from '@ui-kitten/components';
 
-let userContributions = 5;
-let userRequests = 3;
+let karma = 5
 let userName = 'Cherie Zhong';
 let displayName = userName;
 let userAddress = '3790 Wilshire Blvd, Los Angeles, CA 90010'
 
 const StarColor = (props:any) => {
   let fill;
-  if(userContributions < 1) fill = '#E4E9F2'
-  if(userContributions > 0) fill = '#FFF3CD'
-  if(userContributions > 4) fill = '#FFE49B'	
-  if(userContributions > 7) fill = '#FFD169'	
-  if(userContributions > 9) fill = '#FFBE43'	
-  if(userContributions > 12) fill = '#FF9F05'
-  if(userContributions > 15) fill = '#DB8003'
+  if(karma < 1) fill = '#E4E9F2'
+  if(karma > 0) fill = '#FFF3CD'
+  if(karma > 4) fill = '#FFE49B'	
+  if(karma > 7) fill = '#FFD169'	
+  if(karma > 9) fill = '#FFBE43'	
+  if(karma > 12) fill = '#FF9F05'
+  if(karma > 15) fill = '#DB8003'
   return(
     <Icon {...props}
       width={32}
@@ -35,7 +34,7 @@ const Header = (props: any) => (
   <View {...props}>
     <StarColor/>
     <Text category='h6'>{displayName}</Text>
-    <Text category='s1'>{`${userRequests} requests & ${userContributions} donations`}</Text>
+    <Text category='s1'>{`${karma} karma points`}</Text>
   </View>
 );
 
