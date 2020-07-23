@@ -1,7 +1,7 @@
 import produce from 'immer';
 import * as types from './actionsTypes';
 
-const initialState:{userId:string, userName:string, anonymous:string, email:string, address:string, karma:number, userRequests:object[], userTasks:object[], appTasks:object[], currentTask:object } = {
+const initialState:{userId:string, userName:string, anonymous:string, email:string, address:string, karma:number, userRequests:{id?:string}[], userTasks:{id?:string}[], appTasks:{id?:string}[], currentTask:{id?:string} } = {
   userId:'', 
   userName:'',
   anonymous: '', 
@@ -14,8 +14,17 @@ const initialState:{userId:string, userName:string, anonymous:string, email:stri
   currentTask:{}
 };
 
-export default (state = initialState, action: { type?: any; payload: any; }) => produce(state, (draft: { userId: any; userName: any; anonymous: any; email: any; address: any; karma: any; userRequests: any; userTasks: any; appTasks: any; currentTask: any; }) => {
-  let { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks, currentTask} = draft;
+export default (state = initialState, action: { type?: string; payload: any | {id?:string}}) => {
+  let userId = state.userId;
+  let userName = state.userName;
+  let anonymous = state.anonymous;
+  let email = state.email;
+  let address = state.address;
+  let karma = state.karma;
+  let userRequests = [...state.userRequests];
+  let userTasks = [...state.appTasks];
+  let appTasks = [...state.appTasks];
+  let currentTask = {...state.currentTask};
 
   switch (action.type) {
     case types.SET_USER_ID: {
@@ -90,7 +99,7 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     }
     case types.ADD_USER_REQUESTS: {
       if (action.payload) {
-        userRequests.shift(action.payload)
+        userRequests.unshift(action.payload)
         return {
           ...state,
           userRequests: userRequests 
@@ -101,8 +110,8 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     case types.REMOVE_USER_REQUESTS: {
       if (action.payload) {
         const { payload } = action;
-        const newUserRequests: { id: any; }[] = [];
-        userRequests.forEach((task: { id: any; }) => {
+        const newUserRequests: {id?:string}[] = [];
+        userRequests.forEach((task:{id?:string}) => {
           if (task.id !== payload) {
             newUserRequests.push(task);
           }
@@ -125,7 +134,7 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     }
     case types.ADD_USER_TASKS: {
       if (action.payload) {
-        userTasks.shift(action.payload)
+        userTasks.unshift(action.payload)
         return {
           ...state,
           userTasks: userTasks
@@ -137,7 +146,7 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
       if (action.payload) {
         const { payload } = action;
         const newUserTasks: any[] = [];
-        userTasks.forEach((task: { id: any; }) => {
+        userTasks.forEach(task => {
           if (task.id !== payload) {
             newUserTasks.push(task);
           }
@@ -160,7 +169,7 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     }
     case types.ADD_APP_TASKS: {
       if (action.payload) {
-        appTasks.shift(action.payload)
+        appTasks.unshift(action.payload)
         return {
           ...state,
           appTasks: appTasks
@@ -172,7 +181,7 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
       if (action.payload) {
         const { payload } = action;
         const newAppTasks: any[] = [];
-        appTasks.forEach((task: { id: any; }) => {
+        appTasks.forEach(task => {
           if (task.id !== payload) {
             newAppTasks.push(task);
           }
@@ -198,4 +207,4 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
         ...state
       }
   }
-})
+}
