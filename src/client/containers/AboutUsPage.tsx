@@ -17,8 +17,9 @@ import {
 } from '../Reducer/actions';
 
 const AboutUsPage = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state: any) => state);
+  const dispatch = useDispatch()
+  const store = useSelector((state: any) => state.main)
+  
   return (
     <Layout
       style={{

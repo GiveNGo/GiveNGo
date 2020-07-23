@@ -1,7 +1,6 @@
-import produce from 'immer';
 import * as types from './actionsTypes';
 
-const initialState:{userId:string, userName:string, anonymous:string, email:string, address:string, karma:number, userRequests:object[], userTasks:object[], appTasks:object[], currentTask:object } = {
+const initialState:{userId:string, userName:string, anonymous:string, email:string, address:string, karma:number, userRequests:{id?:string}[], userTasks:{id?:string}[], appTasks:{id?:string}[], currentTask:{id?:string} } = {
   userId:'', 
   userName:'',
   anonymous: '', 
@@ -14,8 +13,17 @@ const initialState:{userId:string, userName:string, anonymous:string, email:stri
   currentTask:{}
 };
 
-export default (state = initialState, action: { type?: any; payload: any; }) => produce(state, (draft: { userId: any; userName: any; anonymous: any; email: any; address: any; karma: any; userRequests: any; userTasks: any; appTasks: any; currentTask: any; }) => {
-  let { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks, currentTask} = draft;
+export default (state = initialState, action: { type?: string; payload: any | {id?:string}}) => {
+  let copyUserId = state.userId;
+  let copyUserName = state.userName;
+  let copyAnonymous = state.anonymous;
+  let copyEmail = state.email;
+  let copyAddress = state.address;
+  let copyKarma = state.karma;
+  let copyUserRequests = state.userRequests ? state.userRequests.slice() : state.userRequests;
+  let copyUserTasks = state.userTasks ? state.userTasks.slice() : state.userTasks;
+  let copyAppTasks = state.appTasks ? state.appTasks.slice() : state.appTasks;
+  let copyCurrentTask = state.currentTask ? {...state.currentTask} : state.currentTask;
 
   switch (action.type) {
     case types.SET_USER_ID: {
@@ -29,11 +37,13 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     }
     case types.SET_USER_NAME: {
       if (action.payload) {
+        console.log('action.payload', action.payload)
         return {
           ...state,  
           userName: action.payload
         }
       }
+      
       break;
     }
     case types.SET_ANONYMOUS: {
@@ -65,17 +75,24 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     }
     case types.SET_KARMA: {
       if (action.payload) {
-        return {
-          ...state, 
-          karma: action.payload
+        if (action.payload === copyKarma){
+          return {
+            state
+          }
+        } else {
+          return {
+            ...state, 
+            karma: action.payload
+          }
         }
       }
       break;
     }
     case types.ADD_KARMA: {
+      copyKarma++
       return {
         ...state, 
-        karma:karma+1
+        karma: copyKarma
       }
       break;
     }
@@ -90,10 +107,10 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     }
     case types.ADD_USER_REQUESTS: {
       if (action.payload) {
-        userRequests.shift(action.payload)
+        copyUserRequests.unshift(action.payload)
         return {
           ...state,
-          userRequests: userRequests 
+          userRequests: copyUserRequests 
         }
       }
       break;
@@ -101,8 +118,8 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     case types.REMOVE_USER_REQUESTS: {
       if (action.payload) {
         const { payload } = action;
-        const newUserRequests: { id: any; }[] = [];
-        userRequests.forEach((task: { id: any; }) => {
+        const newUserRequests: {id?:string}[] = [];
+        copyUserRequests.forEach((task:{id?:string}) => {
           if (task.id !== payload) {
             newUserRequests.push(task);
           }
@@ -125,10 +142,10 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     }
     case types.ADD_USER_TASKS: {
       if (action.payload) {
-        userTasks.shift(action.payload)
+        copyUserTasks.unshift(action.payload)
         return {
           ...state,
-          userTasks: userTasks
+          userTasks: copyUserTasks
         }
       }
       break;
@@ -137,7 +154,7 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
       if (action.payload) {
         const { payload } = action;
         const newUserTasks: any[] = [];
-        userTasks.forEach((task: { id: any; }) => {
+        copyUserTasks.forEach(task => {
           if (task.id !== payload) {
             newUserTasks.push(task);
           }
@@ -160,10 +177,10 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     }
     case types.ADD_APP_TASKS: {
       if (action.payload) {
-        appTasks.shift(action.payload)
+        copyAppTasks.unshift(action.payload)
         return {
           ...state,
-          appTasks: appTasks
+          appTasks: copyAppTasks
         }
       }
       break;
@@ -172,7 +189,7 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
       if (action.payload) {
         const { payload } = action;
         const newAppTasks: any[] = [];
-        appTasks.forEach((task: { id: any; }) => {
+        copyAppTasks.forEach(task => {
           if (task.id !== payload) {
             newAppTasks.push(task);
           }
@@ -195,7 +212,7 @@ export default (state = initialState, action: { type?: any; payload: any; }) => 
     }
     default:
       return {
-        ...state
+        state
       }
   }
-})
+}
