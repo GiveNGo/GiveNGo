@@ -14,6 +14,9 @@ const CodeOfConductPage = ({ navigation }: any) => {
       <Text>{`I ${store.userName} will be a good person...`}</Text>
       <Button 
       onPress={() => navigation.navigate("Give'N'Go", { screen: 'Home' })}>Accept</Button>
+      <Button 
+      appearance='ghost'
+      onPress={() => navigation.navigate('Sign Up')}>{`< Back`}</Button>
     </Layout>
   );
 };
