@@ -131,10 +131,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 70,
     marginVertical: 0,
-    backgroundColor: "grey",
   },
   title: {
     marginHorizontal: 8,
+    color: "rgb(51, 102, 255)",
   },
   installButton: {
     marginVertical: 4,
