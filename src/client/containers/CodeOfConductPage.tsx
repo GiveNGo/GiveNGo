@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Layout, Card, Text } from '@ui-kitten/components';
+import { Layout, Card, Text, Button } from '@ui-kitten/components';
 import * as types from '../Reducer/actionsTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -18,7 +18,6 @@ import {
 import { ScrollView } from 'react-native-gesture-handler';
 
 const CodeOfConductPage = ({ navigation }: any) => {
-<<<<<<< HEAD
   const dispatch = useDispatch();
   const userName = useSelector((state: { userName: any }) => state.userName);
   // const { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks } = store;
@@ -66,22 +65,17 @@ const CodeOfConductPage = ({ navigation }: any) => {
             or disputes between members.
           </Text>
         </Card>
+        <Button
+          onPress={() => navigation.navigate("Give'N'Go", { screen: 'Home' })}
+        >
+          Accept
+        </Button>
+        <Button
+          appearance="ghost"
+          onPress={() => navigation.navigate('Sign Up')}
+        >{`< Back`}</Button>
       </Layout>
     </ScrollView>
-=======
-  const dispatch = useDispatch()
-  const store = useSelector((state: any) => state.main)
-  
-  return (
-    <Layout>
-      <Text>{`I ${store.userName} will be a good person...`}</Text>
-      <Button 
-      onPress={() => navigation.navigate("Give'N'Go", { screen: 'Home' })}>Accept</Button>
-      <Button 
-      appearance='ghost'
-      onPress={() => navigation.navigate('Sign Up')}>{`< Back`}</Button>
-    </Layout>
->>>>>>> master
   );
 };
 
