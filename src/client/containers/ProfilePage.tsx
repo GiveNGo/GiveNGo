@@ -3,29 +3,21 @@ import { View, StyleSheet } from 'react-native';
 import { ListItem, Button, Input, Toggle, Text, Card, Icon } from '@ui-kitten/components';
 import * as types from '../Reducer/actionsTypes';
 import { useDispatch, useSelector } from 'react-redux'
-import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Reducer/actions';
-
-let karma = 5
-let userName = 'Cherie Zhong';
-let anonymous = userName;
-let address = '3790 Wilshire Blvd, Los Angeles, CA 90010'
-// const dispatch = useDispatch()
-// const store = useSelector((state: any) => state.main)
-// let karma = store.karma
-// let userName = store.userName
-// let anonymous = store.userName
-// let address = store.address
+import { setAnonymous, setAddress, loginOut } from '../Reducer/actions';
+import { cos } from "react-native-reanimated";
 
 
 const StarColor = (props:any) => {
+  const store = useSelector((state: any) => state.main)
+  console.log('store att start color', store)
   let fill;
-  if(karma < 1) fill = '#E4E9F2'
-  if(karma > 0) fill = '#FFF3CD'
-  if(karma > 4) fill = '#FFE49B'	
-  if(karma > 7) fill = '#FFD169'	
-  if(karma > 9) fill = '#FFBE43'	
-  if(karma > 12) fill = '#FF9F05'
-  if(karma > 15) fill = '#DB8003'
+  if(!store.karma) fill = '#E4E9F2'
+  if(store.karma > 0) fill = '#FFF3CD'
+  if(store.karma > 4) fill = '#FFE49B'	
+  if(store.karma > 7) fill = '#FFD169'	
+  if(store.karma > 9) fill = '#FFBE43'	
+  if(store.karma > 12) fill = '#FF9F05'
+  if(store.karma > 15) fill = '#DB8003'
   return(
     <Icon {...props}
       width={32}
@@ -40,27 +32,29 @@ const TrashIcon = (props: any) =>(
 )
 
 
-const Header = (props: any) => (
+const Header = (props: any) => {
+  const store = useSelector((state: any) => state.main)
+
+  return (
   <View {...props}>
     <StarColor/>
-    <Text category='h6'>{anonymous}</Text>
-    <Text category='s1'>{`${karma} karma points`}</Text>
+    <Text category='h6'>{store.anonymous}</Text>
+    <Text category='s1'>{`${store.karma} karma points`}</Text>
   </View>
-);
+  )
+};
 
 const Footer = (props:any) => {
+  const dispatch = useDispatch()
+  const store = useSelector((state: any) => state.main)
   const [activeChecked, setActiveChecked] = React.useState(false);
 
   const onActiveCheckedChange = (isChecked: React.SetStateAction<boolean>) => {
     setActiveChecked(isChecked);
-    if(anonymous === 'Anonymous'){
-      // dispatch(setAnonymous(userName))
-      anonymous = userName
-      // involk change display to database
+    if(store.anonymous === 'Anonymous'){
+      dispatch(setAnonymous(store.userName))
     } else {
-      // dispatch(setAnonymous('Anonymous'))
-      anonymous = 'Anonymous'
-      // involk change display to database
+      dispatch(setAnonymous('Anonymous'))
     }
   };
 
@@ -77,11 +71,12 @@ const Footer = (props:any) => {
 }
 
 export default function  ProfilePage ({ navigation }: any){
+  const dispatch = useDispatch()
+  const store = useSelector((state: any) => state.main)
   const [newAddress, setNewAddress] = useState(false)
 
   const postAddress = (value:string) => {
-    // dispatch(setAddress(value));
-    address = value
+    dispatch(setAddress(value));
     return setNewAddress(false)
   }
 
@@ -91,11 +86,16 @@ export default function  ProfilePage ({ navigation }: any){
     appearance='outline' 
     size='tiny'>change</Button>
   );
+  
+  const out = () => {
+    dispatch(loginOut())
+    navigation.navigate("Login")
+  }
 
   const DeleteAccount = () => (
     <Button
       // involk change delete account from database and redirect to login
-      onPress={() => navigation.navigate("Login")}
+      onPress={out}
       status='basic' 
       appearance='ghost' 
       accessoryLeft={TrashIcon}/>
@@ -125,7 +125,7 @@ export default function  ProfilePage ({ navigation }: any){
     <Card style={styles.card} header={Header} footer={Footer}>
       {newAddress? <InputAddress/> : <ListItem
         title='Deliver Address'
-        description={`${address}`}
+        description={`${store.address}`}
         accessoryRight={ChangeAddress}
       />}
       <ListItem

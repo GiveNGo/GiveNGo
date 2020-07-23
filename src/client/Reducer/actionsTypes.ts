@@ -15,4 +15,5 @@ export const SET_APP_TASKS = 'SET_APP_TASKS';
 export const ADD_APP_TASKS = 'ADD_APP_TASKS';
 export const REMOVE_APP_TASKS = 'REMOVE_APP_TASKS';
 export const SET_CURRENT_TASK = 'SET_CURRENT_TASK';
+export const LOGIN_OUT = 'LOGIN_OUT';
 

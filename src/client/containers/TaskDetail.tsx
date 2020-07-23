@@ -7,7 +7,7 @@ import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, s
 const TaskDetail = () => {
   const dispatch = useDispatch()
   const store = useSelector(((state: any) => state.main))
-  
+
   return (
     <Layout>
       <Text>in TaskDetail</Text>

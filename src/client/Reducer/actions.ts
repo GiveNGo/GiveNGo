@@ -84,3 +84,7 @@ export const setCurrentTask = (array:object[]) => ({
   type: types.SET_CURRENT_TASK,
   payload: array,
 });
+
+export const loginOut = () => ({
+  type: types.LOGIN_OUT,
+});
