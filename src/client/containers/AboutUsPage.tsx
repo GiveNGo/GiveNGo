@@ -1,8 +1,24 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Layout, Text, Card } from '@ui-kitten/components';
+import * as types from '../Reducer/actionsTypes';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setUserId,
+  setUserName,
+  setAnonymous,
+  setEmail,
+  setAddress,
+  setKarma,
+  setUserRequests,
+  setUserTasks,
+  setAppTasks,
+  setCurrentTask,
+} from '../Reducer/actions';
 
 const AboutUsPage = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state: any) => state);
   return (
     <Layout
       style={{
@@ -19,9 +35,6 @@ const AboutUsPage = () => {
           {'\n'}
           Our goal is to help build community while helping those in need.
           {'\n'}
-          {'\n'}
-          Give 'n' go includes a chat app to allow users to coordinate for drop
-          off or communicate any specific requirements.
         </Text>
       </Card>
     </Layout>

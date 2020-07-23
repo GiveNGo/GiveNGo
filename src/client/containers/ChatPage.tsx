@@ -1,7 +1,21 @@
-import React from "react";
-import { Button, List, ListItem, Layout, Avatar } from "@ui-kitten/components";
-import { StyleSheet, ScrollView, View, Text } from "react-native";
-import Swipeable from "react-native-gesture-handler/Swipeable";
+import React from 'react';
+import { Button, List, ListItem, Layout, Avatar } from '@ui-kitten/components';
+import { StyleSheet, ScrollView, View, Text } from 'react-native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import * as types from '../Reducer/actionsTypes';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setUserId,
+  setUserName,
+  setAnonymous,
+  setEmail,
+  setAddress,
+  setKarma,
+  setUserRequests,
+  setUserTasks,
+  setAppTasks,
+  setCurrentTask,
+} from '../Reducer/actions';
 
 /**
  * @param props - React Native Icons
@@ -14,8 +28,11 @@ const mockData = new Array(8).fill({
 });
 
 const ProfileIcon = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state: any) => state);
+
   return (
-    <Avatar shape="rounded" source={require("../../../assets/alan.jpg")} />
+    <Avatar shape="rounded" source={require('../../../assets/alan.jpg')} />
   );
 };
 
@@ -29,13 +46,13 @@ export default function ChatPage({ navigation }: any) {
   const RightActions = () => {
     return (
       <View
-        style={{ flex: 1, backgroundColor: "red", justifyContent: "center" }}
+        style={{ flex: 1, backgroundColor: 'red', justifyContent: 'center' }}
       >
         <Text
           style={{
-            color: "white",
+            color: 'white',
             paddingHorizontal: 300,
-            fontWeight: "600",
+            fontWeight: '600',
           }}
         >
           Delete?
@@ -51,14 +68,14 @@ export default function ChatPage({ navigation }: any) {
         description={`${item.desc}`}
         accessoryLeft={ProfileIcon}
         accessoryRight={renderItemAccessory}
-        onPress={() => navigation.navigate("ChatFeed")}
+        onPress={() => navigation.navigate('ChatFeed')}
       />
     </Swipeable>
   );
   return (
     <ScrollView style={styles.scrollView}>
       <Layout
-        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         level="3"
       >
         <List
@@ -74,14 +91,14 @@ export default function ChatPage({ navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     maxHeight: 800,
-    width: "100%",
+    width: '100%',
   },
   items: {
     height: 100,
     marginBottom: 20,
   },
   scrollView: {
-    backfaceVisibility: "visible",
+    backfaceVisibility: 'visible',
     marginHorizontal: 20,
   },
   textAction: {
