@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyleSheet } from 'react-native';
 
-import { Button, Icon } from '@ui-kitten/components';
+import { Button, Icon, Card } from '@ui-kitten/components';
 
 import { TaskCardProps } from '../../types/types';
 
@@ -15,7 +15,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
   requester,
 }) => {
   return (
-    <Button style={styles.button} appearance='ghost' accessoryLeft={StarIcon}>
+    <Button style={styles.button} accessoryLeft={StarIcon} appearance='ghost'>
       {requester} needs help: {description}
     </Button>
   );
@@ -24,7 +24,8 @@ const TaskCard: React.FC<TaskCardProps> = ({
 const styles = StyleSheet.create({
   button: {
     margin: 1,
-    alignSelf: 'flex-start',
+    justifyContent: 'flex-start',
+    minWidth: 50,
   },
 });
 

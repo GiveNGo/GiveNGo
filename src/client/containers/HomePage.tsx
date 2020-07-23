@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <Layout style={styles.outer}>
       <Layout style={styles.inner}>
-        <Layout>
+        <Layout style={styles.tasks}>
           <Text category='h6'>Current Tasks:</Text>
           <Divider />
           {testTasks}
@@ -72,5 +72,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 10,
     paddingRight: 10,
+  },
+  tasks: {
+    flex: 1,
+    justifyContent: 'flex-start',
   },
 });
