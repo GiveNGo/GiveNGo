@@ -10,6 +10,7 @@
     "both:tsc": "nodemon --watch ./src --exec tsc & npm run start",
     "build": "tsc -p ."
   },
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@eva-design/eva": "^2.0.0",
     "@react-native-community/masked-view": "^0.1.10",
@@ -20,11 +21,14 @@
     "@types/crypto-js": "^3.1.47",
     "@types/express": "^4.17.7",
     "@types/node": "^14.0.24",
+    "@types/react-redux": "^7.1.9",
+    "@ui-kitten/components": "^5.0.0",
     "@ui-kitten/eva-icons": "^5.0.0",
     "dotenv": "^8.2.0",
     "expo": "~38.0.8",
     "expo-status-bar": "^1.0.2",
     "express": "^4.17.1",
+    "immer": "^7.0.5",
     "mongoose": "^5.9.25",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
@@ -32,11 +36,18 @@
     "react-native-gesture-handler": "^1.6.1",
     "react-native-maps": "^0.27.1",
     "react-native-maps-directions": "^1.8.0",
+    "react-native-paper": "^4.0.1",
     "react-native-reanimated": "^1.9.0",
     "react-native-screens": "^2.9.0",
     "react-native-svg": "^12.1.0",
+    "react-native-swipe-list-view": "^3.2.3",
+    "react-native-swipeout": "^2.3.6",
     "react-native-tab-view": "^2.15.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
@@ -45,7 +56,11 @@
     "@types/react-router-native": "^5.1.0",
     "@ui-kitten/components": "^5.0.0",
     "crypto-js": "^4.0.0",
+    "@types/socket.io-client": "^1.4.33",
     "nodemon": "^2.0.4",
+    "react-native-gifted-chat": "^0.16.3",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
     "typescript": "~3.9.5"
   },
   "private": true
