@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   ListItem,
@@ -6,13 +6,13 @@ import {
   Avatar,
   Divider,
   Text,
-} from "@ui-kitten/components";
-import { StyleSheet, View } from "react-native";
-import Swipeable from "react-native-gesture-handler/Swipeable";
-import { FlatList } from "react-native-gesture-handler";
-import flatListData from "../../../data/flatListData";
-import * as types from "../Reducer/actionsTypes";
-import { useDispatch, useSelector } from "react-redux";
+} from '@ui-kitten/components';
+import { StyleSheet, View } from 'react-native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { FlatList } from 'react-native-gesture-handler';
+import flatListData from '../../../data/flatListData';
+import * as types from '../Reducer/actionsTypes';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setUserId,
   setUserName,
@@ -24,8 +24,8 @@ import {
   setUserTasks,
   setAppTasks,
   setCurrentTask,
-} from "../Reducer/actions";
-import { black } from "react-native-paper/lib/typescript/src/styles/colors";
+} from '../Reducer/actions';
+import { black } from 'react-native-paper/lib/typescript/src/styles/colors';
 
 /**
  * @param props - React Native Icons
@@ -80,22 +80,9 @@ export default function ChatPage({ navigation }: any) {
   );
 
   return (
-<<<<<<< HEAD
-    <Layout
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-      level="3"
-    >
-      <FlatList
-        style={styles.container}
-        data={mockData}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
-      />
-    </Layout>
-=======
     <React.Fragment>
       <Layout
-        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         level="3"
       >
         <View>
@@ -113,31 +100,26 @@ export default function ChatPage({ navigation }: any) {
         />
       </Layout>
     </React.Fragment>
->>>>>>> master
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     maxHeight: 800,
-<<<<<<< HEAD
-    width: '100%',
-=======
-    width: "95%",
+    width: '95%',
   },
   details: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     height: 70,
     marginVertical: 0,
-    backgroundColor: "rgba(122, 111, 111, 0.5)",
+    backgroundColor: 'rgba(122, 111, 111, 0.5)',
   },
   title: {
-    color: "rgb(51, 102, 255)",
+    color: 'rgb(51, 102, 255)',
     marginTop: 20,
     margin: 10,
->>>>>>> master
   },
   items: {
     height: 100,
@@ -145,7 +127,7 @@ const styles = StyleSheet.create({
     marginBottom: 14,
     borderWidth: 0.5,
     borderRadius: 5,
-    shadowColor: "black",
+    shadowColor: 'black',
   },
   scrollView: {
     backfaceVisibility: 'visible',
