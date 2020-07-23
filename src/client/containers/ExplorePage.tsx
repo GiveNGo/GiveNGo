@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
 import { View } from "react-native";
 import { Text, Button } from '@ui-kitten/components';
+import * as types from '../Reducer/actionsTypes';
+import { useDispatch, useSelector } from 'react-redux'
+import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Reducer/actions';
 
 
 export default function ExplorePage ({ navigation }: any): React.ReactElement {
+  const dispatch = useDispatch()
+  const state = useSelector(((state: any) => state))
   const [region, setRegion] = useState({
     latitude: 52.5200066,
     longitude: 13.404954,
