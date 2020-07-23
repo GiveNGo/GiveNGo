@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
 import {
   Button,
   Layout,
@@ -11,15 +11,29 @@ import {
 } from '@ui-kitten/components';
 
 export default function RequestPage({ navigation }: any): React.ReactElement {
-  const [request, setRequest] = React.useState<string>('');
-  const [selectedIndex, setSelectedIndex] = React.useState<number>();
+  const [request, setRequest] = useState<string>('');
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
-  function addRequest() {
+  const taskType: string[] = [
+    'Grocery',
+    'Pharmacy',
+    'Clothing',
+    'Household',
+    'Pets',
+    'Other',
+  ];
+
+  const addRequest = () => {
     fetch('/request', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         taskBody: request,
+        taskType: taskType[selectedIndex],
+        fulfilled: false,
       }),
     })
       .then((res) => res.json())
@@ -30,7 +44,11 @@ export default function RequestPage({ navigation }: any): React.ReactElement {
         console.log('Error: ', err);
       });
     navigation.navigate("Give'N'Go", { screen: 'Home' });
-  }
+  };
+
+  useEffect(() => {
+    addRequest();
+  }, []);
 
   return (
     <Layout>
@@ -43,7 +61,9 @@ export default function RequestPage({ navigation }: any): React.ReactElement {
           textStyle={{ minHeight: 100 }}
           placeholder="Enter your request..."
           value={request}
-          onChangeText={setRequest}
+          onChangeText={(request) => {
+            setRequest(request);
+          }}
         />
         <Text style={{ marginTop: 8, marginBottom: 5 }} category="s1">
           Select the type of request:
