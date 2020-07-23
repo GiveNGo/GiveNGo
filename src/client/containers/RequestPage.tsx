@@ -9,8 +9,24 @@ import {
   Radio,
   RadioGroup,
 } from '@ui-kitten/components';
+import * as types from '../Reducer/actionsTypes';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setUserId,
+  setUserName,
+  setAnonymous,
+  setEmail,
+  setAddress,
+  setKarma,
+  setUserRequests,
+  setUserTasks,
+  setAppTasks,
+  setCurrentTask,
+} from '../Reducer/actions';
 
 export default function RequestPage({ navigation }: any): React.ReactElement {
+  const dispatch = useDispatch();
+  const state = useSelector((state: any) => state);
   const [request, setRequest] = useState<string>('');
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
