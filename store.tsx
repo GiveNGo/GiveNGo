@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useContext, createContext } from 'react';
+import { createStore, applyMiddleware } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
+import reducer from './src/client/Reducer/rootReducer'
 
+const store = createStore(
+  reducer,
+  composeWithDevTools(applyMiddleware(thunk))
+)
 
-export const StoreContext = createContext();
-
-export const useStoreContext:any = () => useContext(StoreContext);
+export default store

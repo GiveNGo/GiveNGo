@@ -2,9 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { Button, Layout, Input } from '@ui-kitten/components';
-import * as types from '../Context/actionsTypes';
-import { useStoreContext } from '../../../store';
-import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Context/actions';
+import * as types from '../Reducer/actionsTypes';
+import { useDispatch, useSelector } from 'react-redux'
+import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Reducer/actions';
 
 const useInputState = (initialValue = '') => {
   const [value, setValue] = useState(initialValue);
@@ -12,8 +12,8 @@ const useInputState = (initialValue = '') => {
 };
 
 export default function LoginPage({ navigation }: any): React.ReactElement {
-  const [store, dispatch] = useStoreContext();
-  const { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks } = store;
+  const dispatch = useDispatch()
+  const state = useSelector(((state: any) => state))
   const emailInputState = useInputState();
   const passwordInputState = useInputState();
 

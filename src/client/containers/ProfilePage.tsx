@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from 'react-native';
 import { ListItem, Button, Input, Toggle, Text, Card, Icon } from '@ui-kitten/components';
-import * as types from '../Context/actionsTypes';
-import { useStoreContext } from '../../../store';
-import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Context/actions';
+import * as types from '../Reducer/actionsTypes';
+import { useDispatch, useSelector } from 'react-redux'
+import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Reducer/actions';
 
-let karma = 5
-let userName = 'Cherie Zhong';
-let anonymous = userName;
-let address = '3790 Wilshire Blvd, Los Angeles, CA 90010'
-// const [store, dispatch] = useStoreContext();
+// let karma = 5
+// let userName = 'Cherie Zhong';
+// let anonymous = userName;
+// let address = '3790 Wilshire Blvd, Los Angeles, CA 90010'
+const dispatch = useDispatch()
+const state = useSelector(((state: any) => state))
+let karma = state.karma
+let userName = state.userName
+let anonymous = state.userName
+let address = state.address
 // const { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks } = store;
 
 const StarColor = (props:any) => {
@@ -49,12 +54,12 @@ const Footer = (props:any) => {
   const onActiveCheckedChange = (isChecked: React.SetStateAction<boolean>) => {
     setActiveChecked(isChecked);
     if(anonymous === 'Anonymous'){
-      // dispatch(setAnonymous(userName))
-      anonymous = userName
+      dispatch(setAnonymous(userName))
+      // anonymous = userName
       // involk change display to database
     } else {
-      // dispatch(setAnonymous('Anonymous'))
-      anonymous = 'Anonymous'
+      dispatch(setAnonymous('Anonymous'))
+      // anonymous = 'Anonymous'
       // involk change display to database
     }
   };
@@ -75,8 +80,8 @@ export default function  ProfilePage ({ navigation }: any){
   const [newAddress, setNewAddress] = useState(false)
 
   const postAddress = (value:string) => {
-    // dispatch(setAddress(value));
-    address = value
+    dispatch(setAddress(value));
+    // address = value
     return setNewAddress(false)
   }
 

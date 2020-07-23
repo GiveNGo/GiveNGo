@@ -1,59 +1,100 @@
 import produce from 'immer';
 import * as types from './actionsTypes';
 
-export default (state: any, action: { type?: any; payload: any; }) => produce(state, (draft: { userId: any; userName: any; anonymous: any; email: any; address: any; karma: any; userRequests: any; userTasks: any; appTasks: any; currentTask: any; }) => {
+const initialState:{userId:string, userName:string, anonymous:string, email:string, address:string, karma:number, userRequests:object[], userTasks:object[], appTasks:object[], currentTask:object } = {
+  userId:'', 
+  userName:'',
+  anonymous: '', 
+  email:'', 
+  address:'', 
+  karma:0, 
+  userRequests:[],
+  userTasks:[], 
+  appTasks:[],
+  currentTask:{}
+};
+
+export default (state = initialState, action: { type?: any; payload: any; }) => produce(state, (draft: { userId: any; userName: any; anonymous: any; email: any; address: any; karma: any; userRequests: any; userTasks: any; appTasks: any; currentTask: any; }) => {
   let { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks, currentTask} = draft;
 
   switch (action.type) {
     case types.SET_USER_ID: {
       if (action.payload) {
-        userId=action.payload
+        return {
+          ...state,  
+          userId: action.payload
+        }
       }
       break;
     }
     case types.SET_USER_NAME: {
       if (action.payload) {
-        userName=action.payload
+        return {
+          ...state,  
+          userName: action.payload
+        }
       }
       break;
     }
     case types.SET_ANONYMOUS: {
       if (action.payload) {
-        anonymous=action.payload
+        return {
+          ...state, 
+          anonymous: action.payload
+        }
       }
       break;
     }
     case types.SET_EMAIL: {
       if (action.payload) {
-        email=action.payload
+        return {
+          ...state, 
+          email: action.payload
+        }
       }
       break;
     }
     case types.SET_ADDRESS: {
       if (action.payload) {
-        address=action.payload
+        return {
+          ...state, 
+          address: action.payload
+        }
       }
       break;
     }
     case types.SET_KARMA: {
       if (action.payload) {
-        karma=action.payload
+        return {
+          ...state, 
+          karma: action.payload
+        }
       }
       break;
     }
     case types.ADD_KARMA: {
-        karma=karma+1
+      return {
+        ...state, 
+        karma:karma+1
+      }
       break;
     }
     case types.SET_USER_REQUESTS: {
       if (action.payload) {
-        userRequests=action.payload
+        return {
+          ...state, 
+          userRequests: action.payload
+        }
       }
       break;
     }
     case types.ADD_USER_REQUESTS: {
       if (action.payload) {
         userRequests.shift(action.payload)
+        return {
+          ...state,
+          userRequests: userRequests 
+        }
       }
       break;
     }
@@ -66,20 +107,29 @@ export default (state: any, action: { type?: any; payload: any; }) => produce(st
             newUserRequests.push(task);
           }
         })
-        userRequests=newUserRequests
-        
+        return {
+          ...state,
+          userRequests:newUserRequests
+        }
       }
       break;
     }
     case types.SET_USER_TASKS: {
       if (action.payload) {
-        userTasks=action.payload
+        return {
+          ...state,
+          userTasks: action.payload
+        }
       }
       break;
     }
     case types.ADD_USER_TASKS: {
       if (action.payload) {
         userTasks.shift(action.payload)
+        return {
+          ...state,
+          userTasks: userTasks
+        }
       }
       break;
     }
@@ -92,19 +142,29 @@ export default (state: any, action: { type?: any; payload: any; }) => produce(st
             newUserTasks.push(task);
           }
         })
-        userTasks=newUserTasks
+        return {
+          ...state,
+          userTasks: newUserTasks
+        }
       }
       break;
     }
     case types.SET_APP_TASKS: {
       if (action.payload) {
-        appTasks=action.payload
+        return {
+          ...state,
+          appTasks: action.payload
+        }
       }
       break;
     }
     case types.ADD_APP_TASKS: {
       if (action.payload) {
         appTasks.shift(action.payload)
+        return {
+          ...state,
+          appTasks: appTasks
+        }
       }
       break;
     }
@@ -117,17 +177,25 @@ export default (state: any, action: { type?: any; payload: any; }) => produce(st
             newAppTasks.push(task);
           }
         })
-        appTasks=newAppTasks
+        return {
+          ...state,
+          appTasks: newAppTasks
+        }
       }
       break;
     }
     case types.SET_CURRENT_TASK: {
       if (action.payload) {
-        currentTask=action.payload
+        return {
+          ...state,
+          currentTask: action.payload
+        }
       }
       break;
     }
     default:
-      throw new Error(`non existent action: ${action.type}`);
+      return {
+        ...state
+      }
   }
 })
