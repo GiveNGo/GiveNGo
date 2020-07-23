@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from 'react-native';
 import { ListItem, Button, Input, Toggle, Text, Card, Icon } from '@ui-kitten/components';
+import * as types from '../Context/actionsTypes';
+import { useStoreContext } from '../../../store';
+import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Context/actions';
 
 let karma = 5
 let userName = 'Cherie Zhong';
-let displayName = userName;
-let userAddress = '3790 Wilshire Blvd, Los Angeles, CA 90010'
+let anonymous = userName;
+let address = '3790 Wilshire Blvd, Los Angeles, CA 90010'
+// const [store, dispatch] = useStoreContext();
+// const { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks } = store;
 
 const StarColor = (props:any) => {
   let fill;
@@ -33,7 +38,7 @@ const TrashIcon = (props: any) =>(
 const Header = (props: any) => (
   <View {...props}>
     <StarColor/>
-    <Text category='h6'>{displayName}</Text>
+    <Text category='h6'>{anonymous}</Text>
     <Text category='s1'>{`${karma} karma points`}</Text>
   </View>
 );
@@ -43,11 +48,13 @@ const Footer = (props:any) => {
 
   const onActiveCheckedChange = (isChecked: React.SetStateAction<boolean>) => {
     setActiveChecked(isChecked);
-    if(displayName === 'Anonymous'){
-      displayName = userName
+    if(anonymous === 'Anonymous'){
+      // dispatch(setAnonymous(userName))
+      anonymous = userName
       // involk change display to database
     } else {
-      displayName = 'Anonymous'
+      // dispatch(setAnonymous('Anonymous'))
+      anonymous = 'Anonymous'
       // involk change display to database
     }
   };
@@ -68,7 +75,8 @@ export default function  ProfilePage ({ navigation }: any){
   const [newAddress, setNewAddress] = useState(false)
 
   const postAddress = (value:string) => {
-    userAddress = value
+    // dispatch(setAddress(value));
+    address = value
     return setNewAddress(false)
   }
 
@@ -112,7 +120,7 @@ export default function  ProfilePage ({ navigation }: any){
     <Card style={styles.card} header={Header} footer={Footer}>
       {newAddress? <InputAddress/> : <ListItem
         title='Deliver Address'
-        description={`${userAddress}`}
+        description={`${address}`}
         accessoryRight={ChangeAddress}
       />}
       <ListItem

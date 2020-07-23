@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { Button, Layout, Text, Input, Avatar, Divider } from '@ui-kitten/components';

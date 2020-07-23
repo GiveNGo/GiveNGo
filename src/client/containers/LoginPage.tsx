@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { Image, StyleSheet } from 'react-native';
-import { Button, Layout, Text, Input, Avatar, Divider } from '@ui-kitten/components';
+import { Button, Layout, Input } from '@ui-kitten/components';
 import * as types from '../Context/actionsTypes';
 import { useStoreContext } from '../../../store';
 import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Context/actions';

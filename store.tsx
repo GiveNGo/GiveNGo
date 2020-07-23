@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useContext } from 'react';
+import React, { useContext, createContext } from 'react';
 
-export const StoreContext = React.createContext();
+
+export const StoreContext = createContext();
 
 export const useStoreContext:any = () => useContext(StoreContext);
