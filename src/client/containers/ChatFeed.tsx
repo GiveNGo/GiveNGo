@@ -38,10 +38,6 @@ export default function ChatFeed() {
     setChatMessage("");
   };
 
-  const userMessages = chatMessages.map((chatMessage, index) => (
-    <Text style={{ paddingTop: 5, color: "white" }}>{chatMessage}</Text>
-  ));
-
   const handleSend = (newMessage = []) => {
     const socket = io("Insert IP");
     socket.emit("chat message", chatMessage);
