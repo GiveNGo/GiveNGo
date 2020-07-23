@@ -22,15 +22,15 @@ export default function SignUpPage({ navigation }: any): React.ReactElement {
   const auth = () => {
     // would fetch from database
     dispatch(setUserId('124'));
-    dispatch(setUserName(userNameInputState.value));
-    dispatch(setAnonymous(userNameInputState.value))
-    dispatch(setEmail(emailInputState.value));
-    dispatch(setAddress(addressInputState.value));
-    dispatch(setKarma(0));
-    dispatch(setUserRequests([]));
-    dispatch(setUserTasks([]));
-    dispatch(setAppTasks([]));
-    dispatch(setCurrentTask([]));
+    dispatch(setUserName(userNameInputState.value.toString()));
+    dispatch(setAnonymous(userNameInputState.value.toString()))
+    dispatch(setEmail(emailInputState.value.toString()));
+    dispatch(setAddress(addressInputState.value.toString()));
+    // dispatch(setKarma(0));
+    // dispatch(setUserRequests([]));
+    // dispatch(setUserTasks([]));
+    // dispatch(setAppTasks([]));
+    // dispatch(setCurrentTask([]));
     
     navigation.navigate('Code of Conduct')
   }
