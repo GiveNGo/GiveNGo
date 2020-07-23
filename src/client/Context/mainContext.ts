@@ -1,8 +1,8 @@
 import produce from 'immer';
 import * as types from './actionsTypes';
 
-export default (state, action) => produce(state, draft => {
-  const { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks, currentTask} = draft;
+export default (state: any, action: { type?: any; payload: any; }) => produce(state, (draft: { userId: any; userName: any; anonymous: any; email: any; address: any; karma: any; userRequests: any; userTasks: any; appTasks: any; currentTask: any; }) => {
+  let { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks, currentTask} = draft;
 
   switch (action.type) {
     case types.SET_USER_ID: {
@@ -60,13 +60,13 @@ export default (state, action) => produce(state, draft => {
     case types.REMOVE_USER_REQUESTS: {
       if (action.payload) {
         const { payload } = action;
-        const newUserRequests = [];
-        userRequests.forEach(task => {
+        const newUserRequests: { id: any; }[] = [];
+        userRequests.forEach((task: { id: any; }) => {
           if (task.id !== payload) {
             newUserRequests.push(task);
           }
         })
-        userTasks=newUserTasks
+        userRequests=newUserRequests
         
       }
       break;
@@ -86,8 +86,8 @@ export default (state, action) => produce(state, draft => {
     case types.REMOVE_USER_TASKS: {
       if (action.payload) {
         const { payload } = action;
-        const newUserTasks = [];
-        userTasks.forEach(task => {
+        const newUserTasks: any[] = [];
+        userTasks.forEach((task: { id: any; }) => {
           if (task.id !== payload) {
             newUserTasks.push(task);
           }
@@ -111,8 +111,8 @@ export default (state, action) => produce(state, draft => {
     case types.REMOVE_APP_TASKS: {
       if (action.payload) {
         const { payload } = action;
-        const newAppTasks = [];
-        appTasks.forEach(task => {
+        const newAppTasks: any[] = [];
+        appTasks.forEach((task: { id: any; }) => {
           if (task.id !== payload) {
             newAppTasks.push(task);
           }
