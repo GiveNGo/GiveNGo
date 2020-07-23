@@ -1,10 +1,12 @@
 import React from 'react';
+
+import { StyleSheet } from 'react-native';
+
 import { Layout, Divider, Text } from '@ui-kitten/components';
 import TaskCard from '../components/TaskCard';
 import RequestCard from '../components/RequestCard';
 
-<<<<<<< HEAD:src/client/containers/DashboardPage.tsx
-export default function DashboardPage() {
+export default function HomePage() {
   const taskList = [
     {
       _id: 1,
@@ -44,22 +46,9 @@ export default function DashboardPage() {
     );
   });
 
-=======
-export default function HomePage() {
->>>>>>> 222da2f7902da8975c331587b06cdd95d0f6f471:src/client/containers/HomePage.tsx
   return (
-    <Layout
-      style={{
-        flex: 1,
-      }}
-    >
-      <Layout
-        style={{
-          flex: 1,
-          paddingLeft: 10,
-          paddingRight: 10,
-        }}
-      >
+    <Layout style={styles.outer}>
+      <Layout style={styles.inner}>
         <Layout>
           <Text category='h6'>Current Tasks:</Text>
           <Divider />
@@ -73,4 +62,15 @@ export default function HomePage() {
       </Layout>
     </Layout>
   );
-};
+}
+
+const styles = StyleSheet.create({
+  outer: {
+    flex: 1,
+  },
+  inner: {
+    flex: 1,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+});

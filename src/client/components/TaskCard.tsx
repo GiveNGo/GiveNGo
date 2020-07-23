@@ -2,9 +2,11 @@ import React from 'react';
 
 import { StyleSheet } from 'react-native';
 
-import { Card, Text } from '@ui-kitten/components';
+import { Button, Icon } from '@ui-kitten/components';
 
 import { TaskCardProps } from '../../types/types';
+
+const StarIcon = (props: any) => <Icon {...props} name='star' />;
 
 const TaskCard: React.FC<TaskCardProps> = ({
   title,
@@ -13,17 +15,16 @@ const TaskCard: React.FC<TaskCardProps> = ({
   requester,
 }) => {
   return (
-    <Card style={styles.card} status='info'>
-      <Text>
-        Help {requester} with their request {title}
-      </Text>
-    </Card>
+    <Button style={styles.button} appearance='ghost' accessoryLeft={StarIcon}>
+      {requester} needs help: {description}
+    </Button>
   );
 };
 
 const styles = StyleSheet.create({
-  card: {
+  button: {
     margin: 1,
+    alignSelf: 'flex-start',
   },
 });
 
