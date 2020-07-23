@@ -6,9 +6,9 @@ const requestController = {};
 
 // add request middleware
 requestController.postRequest = (req, res, next) => {
-  const { owner, taskBody, taskType, fulfilled } = req.body;
+  const { owner, assignee, taskBody, taskType, fulfilled } = req.body;
   models
-    .create({ owner, taskBody, taskType, fulfilled })
+    .create({ owner, assignee, taskBody, taskType, fulfilled })
     .then((result) => {
       res.locals.tasks = result;
       return next();

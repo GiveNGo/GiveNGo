@@ -44,8 +44,17 @@ app.get('/tasks', requestController.getTasks, (req: Request, res: Response) => {
 
 // postRequest route
 app.post(
-  '/request',
+  '/tasks',
   requestController.postRequest,
+  (req: Request, res: Response) => {
+    return res.status(200).json(res.locals.tasks);
+  }
+);
+
+// deleteRequest route
+app.delete(
+  '/tasks/:id',
+  requestController.deleteTask,
   (req: Request, res: Response) => {
     return res.status(200).json(res.locals.tasks);
   }
