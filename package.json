@@ -21,6 +21,7 @@
     "@types/express": "^4.17.7",
     "@types/node": "^14.0.24",
     "@ui-kitten/eva-icons": "^5.0.0",
+    "dotenv": "^8.2.0",
     "expo": "~38.0.8",
     "expo-status-bar": "^1.0.2",
     "express": "^4.17.1",

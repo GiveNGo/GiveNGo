@@ -54,7 +54,7 @@ authController.loginUser = async (
     "username": username,
   })
 
-  if(!possibleUser) res.send('USER DOES NOT EXIST');
+  if (!possibleUser) res.redirect('/fail');
 
   res.locals.possibleUser = possibleUser
 
@@ -62,17 +62,17 @@ authController.loginUser = async (
     CryptoJS.enc.Utf8
   );
 
-  if(password == dbPwd){
-    res.send('SUCCESSFUL AUTHENTICATION');
-  } else {
+  if (password == dbPwd) {
     return next();
+  } else {
+    res.redirect('/fail');
   }
 
   // error handling
-  if (!(dbPwd || username || password)){
+  if (!(dbPwd || username || password)) {
     return next({
       log: `Error caught in authContoller.loginUser: Missing ${username}, decrypt: ${Boolean(decrypted)}`,
-      msg: { err: 'authController.loginUser: ERROR: Check server logs for details'}
+      msg: { err: 'authController.loginUser: ERROR: Check server logs for details' }
     });
   }
 };
