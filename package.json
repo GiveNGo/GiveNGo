@@ -20,6 +20,8 @@
     "@ui-kitten/eva-icons": "^5.0.0",
     "expo": "~38.0.8",
     "expo-status-bar": "^1.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.25",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "react-native": "^0.62.2",
