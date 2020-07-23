@@ -1,10 +1,22 @@
 import React from "react";
-import { Button, List, ListItem, Layout, Avatar } from "@ui-kitten/components";
-import { StyleSheet, ScrollView, View, Text } from "react-native";
+import { Button, ListItem, Layout, Avatar } from "@ui-kitten/components";
+import { StyleSheet, View, Text } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import * as types from '../Reducer/actionsTypes';
-import { useDispatch, useSelector } from 'react-redux'
-import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Reducer/actions';
+import { FlatList } from "react-native-gesture-handler";
+import * as types from "../Reducer/actionsTypes";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setUserId,
+  setUserName,
+  setAnonymous,
+  setEmail,
+  setAddress,
+  setKarma,
+  setUserRequests,
+  setUserTasks,
+  setAppTasks,
+  setCurrentTask,
+} from "../Reducer/actions";
 
 /**
  * @param props - React Native Icons
@@ -17,16 +29,16 @@ const mockData = new Array(8).fill({
 });
 
 const ProfileIcon = () => {
-  const dispatch = useDispatch()
-  const state = useSelector(((state: any) => state))
-  
+  const dispatch = useDispatch();
+  const state = useSelector((state: any) => state);
+
   return (
     <Avatar shape="rounded" source={require("../../../assets/alan.jpg")} />
   );
 };
 
 export default function ChatPage({ navigation }: any) {
-  const renderItemAccessory = (props: any) => (
+  const renderItemAccessory = () => (
     <Button size="tiny" status="danger">
       Delete
     </Button>
@@ -57,23 +69,23 @@ export default function ChatPage({ navigation }: any) {
         description={`${item.desc}`}
         accessoryLeft={ProfileIcon}
         accessoryRight={renderItemAccessory}
-        onPress={() => navigation.navigate("ChatFeed")}
+        onPress={() => navigation.navigate("Chat Feed")}
       />
     </Swipeable>
   );
+
   return (
-    <ScrollView style={styles.scrollView}>
-      <Layout
-        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        level="3"
-      >
-        <List
-          style={styles.container}
-          data={mockData}
-          renderItem={renderItem}
-        />
-      </Layout>
-    </ScrollView>
+    <Layout
+      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      level="3"
+    >
+      <FlatList
+        style={styles.container}
+        data={mockData}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+      />
+    </Layout>
   );
 }
 
