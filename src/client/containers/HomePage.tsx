@@ -1,9 +1,9 @@
 import React from 'react';
-
 import { Layout, Divider, Text } from '@ui-kitten/components';
 import TaskCard from '../components/TaskCard';
 import RequestCard from '../components/RequestCard';
 
+<<<<<<< HEAD:src/client/containers/DashboardPage.tsx
 export default function DashboardPage() {
   const taskList = [
     {
@@ -44,6 +44,9 @@ export default function DashboardPage() {
     );
   });
 
+=======
+export default function HomePage() {
+>>>>>>> 222da2f7902da8975c331587b06cdd95d0f6f471:src/client/containers/HomePage.tsx
   return (
     <Layout
       style={{
@@ -70,4 +73,4 @@ export default function DashboardPage() {
       </Layout>
     </Layout>
   );
-}
+};
