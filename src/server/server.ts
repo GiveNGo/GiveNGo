@@ -27,6 +27,23 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', (err) => {
   console.log('ERROR CONNECTING TO DATABASE: ', err);
 });
+// postRequest route
+app.post(
+  '/tasks',
+  requestController.postRequest,
+  (req: Request, res: Response) => {
+    return res.status(200).json(res.locals.tasks);
+  }
+);
+
+// deleteRequest route
+app.delete(
+  '/tasks/:id',
+  requestController.deleteTask,
+  (req: Request, res: Response) => {
+    return res.status(200).json(res.locals.tasks);
+  }
+);
 
 // Global Error handler
 app.use(
