@@ -9,6 +9,7 @@
     "eject": "expo eject",
     "both:tsc": "nodemon --watch ./src --exec tsc & npm run start"
   },
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@eva-design/eva": "^2.0.0",
     "@react-native-community/masked-view": "^0.1.10",
