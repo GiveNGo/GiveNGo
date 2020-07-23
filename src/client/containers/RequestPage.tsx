@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
 import {
   Button,
   Layout,
@@ -10,23 +10,54 @@ import {
   RadioGroup,
 } from '@ui-kitten/components';
 import * as types from '../Reducer/actionsTypes';
-import { useDispatch, useSelector } from 'react-redux'
-import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Reducer/actions';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setUserId,
+  setUserName,
+  setAnonymous,
+  setEmail,
+  setAddress,
+  setKarma,
+  setUserRequests,
+  setUserTasks,
+  setAppTasks,
+  setCurrentTask,
+} from '../Reducer/actions';
 
 export default function RequestPage({ navigation }: any): React.ReactElement {
+<<<<<<< HEAD
   const dispatch = useDispatch()
   const store = useSelector(((state: any) => state.main))
   
   const [request, setRequest] = React.useState<string>('');
   const [selectedIndex, setSelectedIndex] = React.useState<number>();
+=======
+  const dispatch = useDispatch();
+  const state = useSelector((state: any) => state);
+  const [request, setRequest] = useState<string>('');
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+>>>>>>> 19a1c145c89ac1b25739fdf4e46c33f5ff2f0cd1
 
-  function addRequest() {
+  const taskType: string[] = [
+    'Grocery',
+    'Pharmacy',
+    'Clothing',
+    'Household',
+    'Pets',
+    'Other',
+  ];
+
+  const addRequest = () => {
     fetch('/request', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         taskBody: request,
+        taskType: taskType[selectedIndex],
+        fulfilled: false,
       }),
     })
       .then((res) => res.json())
@@ -37,7 +68,11 @@ export default function RequestPage({ navigation }: any): React.ReactElement {
         console.log('Error: ', err);
       });
     navigation.navigate("Give'N'Go", { screen: 'Home' });
-  }
+  };
+
+  useEffect(() => {
+    addRequest();
+  }, []);
 
   return (
     <Layout>
@@ -50,7 +85,9 @@ export default function RequestPage({ navigation }: any): React.ReactElement {
           textStyle={{ minHeight: 100 }}
           placeholder="Enter your request..."
           value={request}
-          onChangeText={setRequest}
+          onChangeText={(request) => {
+            setRequest(request);
+          }}
         />
         <Text style={{ marginTop: 8, marginBottom: 5 }} category="s1">
           Select the type of request:
