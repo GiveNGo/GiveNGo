@@ -18,7 +18,7 @@ const mockData = new Array(8).fill({
 
 const ProfileIcon = () => {
   const dispatch = useDispatch()
-  const state = useSelector(((state: any) => state))
+  const store = useSelector((state: any) => state.main)
   
   return (
     <Avatar shape="rounded" source={require("../../../assets/alan.jpg")} />

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Image, StyleSheet } from 'react-native';
 import { Button, Layout, Text, Input, Avatar, Divider } from '@ui-kitten/components';
 import * as types from '../Reducer/actionsTypes';
@@ -11,8 +11,9 @@ const useInputState = (initialValue = '') => {
 };
 
 export default function SignUpPage({ navigation }: any): React.ReactElement {
+  const store = useSelector(((state: any) => state.main))
   const dispatch = useDispatch()
-  const state = useSelector(((state: any) => state))
+  const [call, setCall] = useState(false);
   
   const userNameInputState = useInputState();
   const addressInputState = useInputState();
@@ -22,15 +23,12 @@ export default function SignUpPage({ navigation }: any): React.ReactElement {
   const auth = () => {
     // would fetch from database
     dispatch(setUserId('124'));
-    dispatch(setUserName(userNameInputState.value.toString()));
+    dispatch(setUserName(userNameInputState.value));
     dispatch(setAnonymous(userNameInputState.value.toString()))
     dispatch(setEmail(emailInputState.value.toString()));
     dispatch(setAddress(addressInputState.value.toString()));
-    // dispatch(setKarma(0));
-    // dispatch(setUserRequests([]));
-    // dispatch(setUserTasks([]));
-    // dispatch(setAppTasks([]));
-    // dispatch(setCurrentTask([]));
+    setCall(true)
+    
     
     navigation.navigate('Code of Conduct')
   }

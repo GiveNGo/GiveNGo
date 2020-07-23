@@ -1,4 +1,3 @@
-import produce from 'immer';
 import * as types from './actionsTypes';
 
 const initialState:{userId:string, userName:string, anonymous:string, email:string, address:string, karma:number, userRequests:{id?:string}[], userTasks:{id?:string}[], appTasks:{id?:string}[], currentTask:{id?:string} } = {
@@ -38,11 +37,13 @@ export default (state = initialState, action: { type?: string; payload: any | {i
     }
     case types.SET_USER_NAME: {
       if (action.payload) {
+        console.log('action.payload', action.payload)
         return {
           ...state,  
           userName: action.payload
         }
       }
+      
       break;
     }
     case types.SET_ANONYMOUS: {

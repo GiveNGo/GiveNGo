@@ -8,7 +8,8 @@ import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, s
 
 const AboutUsPage = () => {
   const dispatch = useDispatch()
-  const state = useSelector(((state: any) => state))
+  const store = useSelector((state: any) => state.main)
+  
   return (
     <Layout>
       <Text>in About Us</Text>

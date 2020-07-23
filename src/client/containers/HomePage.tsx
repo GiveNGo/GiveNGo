@@ -9,7 +9,7 @@ import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, s
 
 export default function HomePage({ navigation }: any) {
   const dispatch = useDispatch()
-  const state = useSelector(((state: any) => state))
+  const store = useSelector((state: any) => state.main)
   const detailNav = () => {
     navigation.navigate('Home', { screen: 'Task Detail' });
   };

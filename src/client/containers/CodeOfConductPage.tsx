@@ -7,11 +7,11 @@ import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, s
 
 const CodeOfConductPage = ({ navigation }: any) => {
   const dispatch = useDispatch()
-  const userName = useSelector((state: { userName: any; }) => state.userName)
-  // const { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks } = store;
+  const store = useSelector((state: any) => state.main)
+  
   return (
     <Layout>
-      <Text>{`I ${userName} will be a good person...`}</Text>
+      <Text>{`I ${store.userName} will be a good person...`}</Text>
       <Button 
       onPress={() => navigation.navigate("Give'N'Go", { screen: 'Home' })}>Accept</Button>
     </Layout>

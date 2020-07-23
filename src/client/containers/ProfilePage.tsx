@@ -10,12 +10,12 @@ let userName = 'Cherie Zhong';
 let anonymous = userName;
 let address = '3790 Wilshire Blvd, Los Angeles, CA 90010'
 // const dispatch = useDispatch()
-// const state = useSelector(((state: any) => state))
-// let karma = state.karma
-// let userName = state.userName
-// let anonymous = state.userName
-// let address = state.address
-// const { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks } = store;
+// const store = useSelector((state: any) => state.main)
+// let karma = store.karma
+// let userName = store.userName
+// let anonymous = store.userName
+// let address = store.address
+
 
 const StarColor = (props:any) => {
   let fill;
