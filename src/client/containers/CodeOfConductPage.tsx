@@ -11,7 +11,7 @@ const CodeOfConductPage = ({ navigation }: any) => {
   // const { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks } = store;
   return (
     <Layout>
-      <Text>{`I ${userName} will be a good perso...`}</Text>
+      <Text>{`I ${userName} will be a good person...`}</Text>
       <Button 
       onPress={() => navigation.navigate("Give'N'Go", { screen: 'Home' })}>Accept</Button>
     </Layout>
