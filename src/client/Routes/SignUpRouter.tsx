@@ -6,10 +6,10 @@ import CodeOfConductPage from '../containers/CodeOfConductPage';
 const Stack = createStackNavigator();
 
 export const SignUpRouter = () => {
-  return(
+  return (
     <Stack.Navigator>
-      <Stack.Screen name='Sign Up' component={SignUpPage}/>
-      <Stack.Screen name='Code of Conduct' component={CodeOfConductPage}/>
+      <Stack.Screen name="Sign Up" component={SignUpPage} />
+      <Stack.Screen name="Code of Conduct" component={CodeOfConductPage} />
     </Stack.Navigator>
-  )
+  );
 };
