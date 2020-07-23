@@ -1,7 +1,9 @@
 export {};
 import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
 const express = require("express");
-require('dotenv').config();
+const signupRoute = require('./routes/signupRoute');
+const loginRoute = require('./routes/loginRoute');
+// require('dotenv').config();
 const mongoose = require('mongoose');
 const app = express();
 
@@ -15,8 +17,19 @@ app.get('/', (req: Request, res: Response) => {
   res.status(200).send('Nothing here yet')
 });
 
+app.use('/signup', signupRoute);
+app.use('/login', loginRoute);
+
+// app.post('/signup', authController.signUpUser, (req: Request, res: Response) => {
+//   res.status(200).json(res.locals.newUser)
+// })
+
+// app.post('/login', authController.loginUser, (req: Request, res: Response) => {
+//   res.status(200).json(res.locals.possibleUser)
+// });
+
 // CONNECT TO MONGO DB
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://louis-givengo:evee3833@givengo-data.rw3gb.azure.mongodb.net/givengo-data?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true});
 
 mongoose.connection.on('connected', () => {
   console.log('connected to database!')
