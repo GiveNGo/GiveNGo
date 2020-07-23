@@ -12,7 +12,7 @@ export default function HomePage() {
       _id: 1,
       title: 'get milk',
       description: 'I need a gallon of whole milk.',
-      category: 'groceries',
+      category: 'grocery',
       requester: 'Cherie',
       assignee: 'Katty',
     },
@@ -26,9 +26,9 @@ export default function HomePage() {
     },
     {
       _id: 3,
-      title: 'get bread',
-      description: 'I need a loaf of sliced whole wheat bread.',
-      category: 'groceries',
+      title: 'get kitty litter',
+      description: 'I need a container of kitty litter for my cat Sparkles.',
+      category: 'pet',
       requester: 'Spencer',
       assignee: 'Katty',
     },
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   inner: {
     flex: 1,
     paddingLeft: 10,
-    paddingRight: 10,
+    paddingRight: 20,
   },
   tasks: {
     flex: 1,

@@ -2,7 +2,7 @@ export type TaskCardProps = {
   _id: number;
   title: string;
   description: string;
-  category: 'clothing' | 'groceries' | 'pharmacy' | 'other';
+  category: 'grocery' | 'pharmacy' | 'clothing' | 'pet' | 'household' | 'other';
   requester: string;
   assignee: string;
 };
