@@ -6,7 +6,11 @@ import { Layout, Divider, Text } from '@ui-kitten/components';
 import TaskCard from '../components/TaskCard';
 import RequestCard from '../components/RequestCard';
 
-export default function HomePage() {
+export default function HomePage({ navigation }: any) {
+  const detailNav = () => {
+    navigation.navigate('Home', { screen: 'Task Detail' });
+  };
+
   const taskList = [
     {
       _id: 1,
@@ -19,7 +23,7 @@ export default function HomePage() {
     {
       _id: 2,
       title: 'get tylenol',
-      description: 'I need a 50 pill container of tylenol',
+      description: 'I need a 50 pill container of tylenol.',
       category: 'pharmacy',
       requester: 'Vaughn',
       assignee: 'Katty',
@@ -34,10 +38,51 @@ export default function HomePage() {
     },
   ];
 
-  const testTasks = taskList.map((task) => {
+  const requestList = [
+    {
+      _id: 4,
+      title: 'get laundry detergent',
+      description: 'I need a bottle of laundry detergent',
+      category: 'household',
+      requester: 'Marcus',
+      assignee: 'Katty',
+    },
+    {
+      _id: 5,
+      title: 'get socks',
+      description: "I need a pack of men's socks.",
+      category: 'clothing',
+      requester: 'Alan',
+      assignee: 'Katty',
+    },
+    {
+      _id: 6,
+      title: 'get newspaper',
+      description: "I need a copy of today's newspaper.",
+      category: 'other',
+      requester: 'Reid',
+      assignee: 'Katty',
+    },
+  ];
+
+  const userTasks = taskList.map((task) => {
     return (
       <TaskCard
         key={`task ${task._id}`}
+        title={task.title}
+        description={task.description}
+        category={task.category}
+        requester={task.requester}
+        id={task._id}
+        detailNav={detailNav}
+      />
+    );
+  });
+
+  const userRequests = requestList.map((task) => {
+    return (
+      <RequestCard
+        key={`request ${task._id}`}
         title={task.title}
         description={task.description}
         category={task.category}
@@ -52,12 +97,12 @@ export default function HomePage() {
         <Layout style={styles.tasks}>
           <Text category='h6'>Current Tasks:</Text>
           <Divider />
-          {testTasks}
+          {userTasks}
         </Layout>
         <Layout>
           <Text category='h6'>Current Requests:</Text>
           <Divider />
-          <RequestCard />
+          {userRequests}
         </Layout>
       </Layout>
     </Layout>
@@ -72,9 +117,12 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 10,
     paddingRight: 20,
+    paddingTop: 20,
   },
   tasks: {
-    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  tasks: {
     justifyContent: 'flex-start',
   },
 });

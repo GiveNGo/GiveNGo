@@ -2,29 +2,35 @@ import React from 'react';
 
 import { StyleSheet } from 'react-native';
 
-import { Button, Icon, Card } from '@ui-kitten/components';
+import { Button, Icon } from '@ui-kitten/components';
 
 import { TaskCardProps } from '../../types/types';
 
 const TaskCard: React.FC<TaskCardProps> = ({
-  title,
+  id,
   description,
   category,
   requester,
+  detailNav,
 }) => {
   const iconMap = {
     grocery: 'shopping-cart-outline',
     pharmacy: 'thermometer-plus-outline',
-    clothing: 'person-outline',
+    clothing: 'shopping-bag-outline',
     pet: 'github-outline',
-    household: 'home-outline',
-    other: 'star-outline',
+    household: 'scissors-outline',
+    other: 'heart-outline',
   };
   const icon = (props: any) => (
     <Icon {...props} name={`${iconMap[category]}`} />
   );
   return (
-    <Button style={styles.button} accessoryLeft={icon} appearance='ghost'>
+    <Button
+      style={styles.button}
+      accessoryLeft={icon}
+      appearance='ghost'
+      onPress={detailNav}
+    >
       {requester} needs help: {description}
     </Button>
   );
