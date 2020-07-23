@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, List, ListItem, Layout, Avatar } from '@ui-kitten/components';
-import { StyleSheet, ScrollView, View, Text } from 'react-native';
+import { Button, ListItem, Layout, Avatar } from '@ui-kitten/components';
+import { StyleSheet, View, Text } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { FlatList } from 'react-native-gesture-handler';
 import * as types from '../Reducer/actionsTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -37,7 +38,7 @@ const ProfileIcon = () => {
 };
 
 export default function ChatPage({ navigation }: any) {
-  const renderItemAccessory = (props: any) => (
+  const renderItemAccessory = () => (
     <Button size="tiny" status="danger">
       Delete
     </Button>
@@ -68,23 +69,23 @@ export default function ChatPage({ navigation }: any) {
         description={`${item.desc}`}
         accessoryLeft={ProfileIcon}
         accessoryRight={renderItemAccessory}
-        onPress={() => navigation.navigate('ChatFeed')}
+        onPress={() => navigation.navigate('Chat Feed')}
       />
     </Swipeable>
   );
+
   return (
-    <ScrollView style={styles.scrollView}>
-      <Layout
-        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-        level="3"
-      >
-        <List
-          style={styles.container}
-          data={mockData}
-          renderItem={renderItem}
-        />
-      </Layout>
-    </ScrollView>
+    <Layout
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+      level="3"
+    >
+      <FlatList
+        style={styles.container}
+        data={mockData}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+      />
+    </Layout>
   );
 }
 
