@@ -4,12 +4,24 @@ import { Layout, Divider, Text } from '@ui-kitten/components';
 import TaskCard from '../components/TaskCard';
 import RequestCard from '../components/RequestCard';
 import * as types from '../Reducer/actionsTypes';
-import { useDispatch, useSelector } from 'react-redux'
-import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Reducer/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setUserId,
+  setUserName,
+  setAnonymous,
+  setEmail,
+  setAddress,
+  setKarma,
+  setUserRequests,
+  setUserTasks,
+  setAppTasks,
+  setCurrentTask,
+} from '../Reducer/actions';
 
 export default function HomePage({ navigation }: any) {
   const dispatch = useDispatch()
   const store = useSelector((state: any) => state.main)
+    
   const detailNav = () => {
     navigation.navigate('Home', { screen: 'Task Detail' });
   };
@@ -98,12 +110,12 @@ export default function HomePage({ navigation }: any) {
     <Layout style={styles.outer}>
       <Layout style={styles.inner}>
         <Layout style={styles.tasks}>
-          <Text category='h6'>Current Tasks:</Text>
+          <Text category="h6">Current Tasks:</Text>
           <Divider />
           {userTasks}
         </Layout>
         <Layout>
-          <Text category='h6'>Current Requests:</Text>
+          <Text category="h6">Current Requests:</Text>
           <Divider />
           {userRequests}
         </Layout>
@@ -121,9 +133,6 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 20,
     paddingTop: 20,
-  },
-  tasks: {
-    justifyContent: 'flex-start',
   },
   tasks: {
     justifyContent: 'flex-start',

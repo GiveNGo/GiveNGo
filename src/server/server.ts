@@ -1,6 +1,6 @@
 export {};
-import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
-const express = require("express");
+import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
+const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const app = express();
@@ -10,21 +10,40 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
 app.get('/', (req: Request, res: Response) => {
-  res.status(200).send('Nothing here yet')
+  res.status(200).send('Nothing here yet');
 });
 
 // CONNECT TO MONGO DB
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.DB_CONNECTION, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 mongoose.connection.on('connected', () => {
-  console.log('connected to database!')
+  console.log('connected to database!');
 });
 
-mongoose.connection.on('error', (err) =>{
+mongoose.connection.on('error', (err) => {
   console.log('ERROR CONNECTING TO DATABASE: ', err);
 });
+// postRequest route
+app.post(
+  '/tasks',
+  requestController.postRequest,
+  (req: Request, res: Response) => {
+    return res.status(200).json(res.locals.tasks);
+  }
+);
+
+// deleteRequest route
+app.delete(
+  '/tasks/:id',
+  requestController.deleteTask,
+  (req: Request, res: Response) => {
+    return res.status(200).json(res.locals.tasks);
+  }
+);
 
 // Global Error handler
 app.use(
@@ -36,7 +55,7 @@ app.use(
   ) => {
     // Set up default error
     const defaultError = {
-      log: "Error caught in global error handler",
+      log: 'Error caught in global error handler',
       status: 500,
       msg: {
         err: err,

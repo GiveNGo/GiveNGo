@@ -1,9 +1,27 @@
 import React, {useState, useEffect} from 'react';
 import { Image, StyleSheet } from 'react-native';
-import { Button, Layout, Text, Input, Avatar, Divider } from '@ui-kitten/components';
+import {
+  Button,
+  Layout,
+  Text,
+  Input,
+  Avatar,
+  Divider,
+} from '@ui-kitten/components';
 import * as types from '../Reducer/actionsTypes';
-import { useDispatch, useSelector } from 'react-redux'
-import { setUserId, setUserName, setAnonymous, setEmail, setAddress, setKarma, setUserRequests, setUserTasks, setAppTasks, setCurrentTask } from '../Reducer/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setUserId,
+  setUserName,
+  setAnonymous,
+  setEmail,
+  setAddress,
+  setKarma,
+  setUserRequests,
+  setUserTasks,
+  setAppTasks,
+  setCurrentTask,
+} from '../Reducer/actions';
 
 const useInputState = (initialValue = '') => {
   const [value, setValue] = useState(initialValue);
@@ -11,10 +29,11 @@ const useInputState = (initialValue = '') => {
 };
 
 export default function SignUpPage({ navigation }: any): React.ReactElement {
+
   const store = useSelector(((state: any) => state.main))
   const dispatch = useDispatch()
   const [call, setCall] = useState(false);
-  
+
   const userNameInputState = useInputState();
   const addressInputState = useInputState();
   const emailInputState = useInputState();
@@ -34,40 +53,43 @@ export default function SignUpPage({ navigation }: any): React.ReactElement {
   }
 
   return (
-    <Layout>
-      <Image style={styles.image} source={require('../../../assets/logo.png')}/>
+    <Layout style={styles.layout}>
+      <Image
+        style={styles.image}
+        source={require('../../../assets/logo.png')}
+      />
       <Input
         style={styles.input}
-        status='info'
-        size='medium'
-        placeholder='Full Name'
+        status="info"
+        size="medium"
+        placeholder="Full Name"
         {...userNameInputState}
       />
       <Input
         style={styles.input}
-        status='info'
-        size='medium'
-        placeholder='Email'
+        status="info"
+        size="medium"
+        placeholder="Email"
         {...emailInputState}
       />
       <Input
         style={styles.input}
-        status='info'
-        size='medium'
-        placeholder='Delivery Address'
+        status="info"
+        size="medium"
+        placeholder="Delivery Address"
         {...addressInputState}
       />
       <Input
         secureTextEntry={true}
         style={styles.input}
-        status='info'
-        size='medium'
-        placeholder='Password'
+        status="info"
+        size="medium"
+        placeholder="Password"
         {...passwordInputState}
       />
-      <Button 
-      style={styles.button}
-      onPress={auth}>Login</Button>
+      <Button style={styles.button} onPress={auth}>
+        Login
+      </Button>
     </Layout>
   );
 }
@@ -88,5 +110,8 @@ const styles = StyleSheet.create({
   },
   title: {
     marginHorizontal: 8,
+  },
+  layout: {
+    height: '100%',
   },
 });
