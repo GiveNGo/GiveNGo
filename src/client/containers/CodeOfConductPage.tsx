@@ -18,9 +18,7 @@ import {
 import { ScrollView } from 'react-native-gesture-handler';
 
 const CodeOfConductPage = ({ navigation }: any) => {
-  const dispatch = useDispatch();
-  const userName = useSelector((state: { userName: any }) => state.userName);
-  // const { userId, userName, anonymous, email, address, karma, userRequests,userTasks, appTasks } = store;
+
   return (
     <ScrollView>
       <Layout
