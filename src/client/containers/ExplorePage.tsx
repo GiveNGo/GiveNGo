@@ -17,17 +17,10 @@ import {
   setCurrentTask,
 } from '../Reducer/actions';
 
-<<<<<<< HEAD
 export default function ExplorePage({ navigation }: any): React.ReactElement {
   const dispatch = useDispatch();
-  const state = useSelector((state: any) => state);
-=======
+  const store = useSelector((state: any) => state.main);
 
-export default function ExplorePage ({ navigation }: any): React.ReactElement {
-  const dispatch = useDispatch()
-  const store = useSelector((state: any) => state.main)
-  
->>>>>>> master
   const [region, setRegion] = useState({
     latitude: 33.987789,
     longitude: -118.470587,
@@ -43,7 +36,7 @@ export default function ExplorePage ({ navigation }: any): React.ReactElement {
     >
       <Marker
         coordinate={{ latitude: 33.987789, longitude: -118.470587 }}
-        pinColor="blue"
+        pinColor='blue'
       >
         <Callout>
           <View
@@ -61,14 +54,14 @@ export default function ExplorePage ({ navigation }: any): React.ReactElement {
           >
             <Button
               style={{ alignSelf: 'flex-start' }}
-              appearance="ghost"
+              appearance='ghost'
               // onPress={onPressButton}
             >
               X
             </Button>
             <Text style={{ alignSelf: 'center' }}>Flour</Text>
             <Button
-              appearance="outline"
+              appearance='outline'
               onPress={() =>
                 navigation.navigate("Give'N'Go", { screen: 'Home' })
               }
