@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import { Image, StyleSheet } from 'react-native';
 import {
   Button,
@@ -29,8 +29,10 @@ const useInputState = (initialValue = '') => {
 };
 
 export default function SignUpPage({ navigation }: any): React.ReactElement {
-  const dispatch = useDispatch();
-  const state = useSelector((state: any) => state);
+
+  const store = useSelector(((state: any) => state.main))
+  const dispatch = useDispatch()
+  const [call, setCall] = useState(false);
 
   const userNameInputState = useInputState();
   const addressInputState = useInputState();
@@ -41,17 +43,14 @@ export default function SignUpPage({ navigation }: any): React.ReactElement {
     // would fetch from database
     dispatch(setUserId('124'));
     dispatch(setUserName(userNameInputState.value));
-    dispatch(setAnonymous(userNameInputState.value));
-    dispatch(setEmail(emailInputState.value));
-    dispatch(setAddress(addressInputState.value));
-    dispatch(setKarma(0));
-    dispatch(setUserRequests([]));
-    dispatch(setUserTasks([]));
-    dispatch(setAppTasks([]));
-    dispatch(setCurrentTask([]));
-
-    navigation.navigate('Code of Conduct');
-  };
+    dispatch(setAnonymous(userNameInputState.value.toString()))
+    dispatch(setEmail(emailInputState.value.toString()));
+    dispatch(setAddress(addressInputState.value.toString()));
+    setCall(true)
+    
+    
+    navigation.navigate('Code of Conduct')
+  }
 
   return (
     <Layout style={styles.layout}>

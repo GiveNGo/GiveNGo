@@ -34,9 +34,9 @@ import { black } from 'react-native-paper/lib/typescript/src/styles/colors';
  */
 
 const ProfileIcon = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state: any) => state);
-
+  const dispatch = useDispatch()
+  const store = useSelector((state: any) => state.main)
+  
   return (
     <Avatar shape="rounded" source={require('../../../assets/alan.jpg')} />
   );

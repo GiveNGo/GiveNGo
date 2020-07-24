@@ -23,8 +23,9 @@ const useInputState = (initialValue = '') => {
 };
 
 export default function LoginPage({ navigation }: any): React.ReactElement {
-  const dispatch = useDispatch();
-  const state = useSelector((state: any) => state);
+  const dispatch = useDispatch()
+  const store = useSelector((state: any) => state.main)
+  
   const emailInputState = useInputState();
   const passwordInputState = useInputState();
 

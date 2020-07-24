@@ -25,10 +25,11 @@ import {
 } from '../Reducer/actions';
 
 export default function RequestPage({ navigation }: any): React.ReactElement {
-  const dispatch = useDispatch();
-  const state = useSelector((state: any) => state);
-  const [request, setRequest] = useState<string>('');
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const dispatch = useDispatch()
+  const store = useSelector(((state: any) => state.main))
+  
+  const [request, setRequest] = React.useState<string>('');
+  const [selectedIndex, setSelectedIndex] = React.useState<number>();
 
   const taskType: string[] = [
     'Grocery',

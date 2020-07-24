@@ -1,6 +1,7 @@
 const express = require("express");
 const signupRoute = require('./routes/signupRoute');
 const loginRoute = require('./routes/loginRoute');
+const taskRoute = require('./routes/taskRoute');
 const mongoose = require('mongoose');
 const app = express();
 
@@ -18,15 +19,21 @@ app.get('/fail', (req, res) => {
 
 app.use('/signup', signupRoute);
 app.use('/login', loginRoute);
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
+app.use('/tasks', taskRoute);
 
-mongoose.connection.on('connected', function () {
+mongoose.connect(process.env.DB_CONNECTION, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on('connected',  () => {
   console.log('connected to database!');
 });
 
-mongoose.connection.on('error', function (err) {
+mongoose.connection.on('error',  (err) => {
   console.log('ERROR CONNECTING TO DATABASE: ', err);
 });
+
 
 // Global Error handler
 app.use(function (err, req, res, next) {

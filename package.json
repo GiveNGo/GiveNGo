@@ -1,8 +1,8 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "nodemon": "nodemon src/server/server.ts",
+    "start": "concurrently --kill-others \"expo start\" \"node src/server/server.js\"",
+    "nodemon": "nodemon src/server/server.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -52,6 +52,7 @@
     "@types/react-native": "~0.62.2",
     "@types/react-router-native": "^5.1.0",
     "@types/socket.io-client": "^1.4.33",
+    "concurrently": "^5.2.0",
     "nodemon": "^2.0.4",
     "react-native-gifted-chat": "^0.16.3",
     "socket.io": "^2.3.0",
