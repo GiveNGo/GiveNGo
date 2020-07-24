@@ -3,7 +3,7 @@ const router = express.Router();
 const requestController = require('../controllers/requestController')
 
 router.post(
-  '/tasks',
+  '/',
   requestController.postRequest,
   (req, res) => {
     return res.status(200).json(res.locals.tasks);
@@ -12,7 +12,7 @@ router.post(
 
 // deleteRequest route
 router.delete(
-  '/tasks/:id',
+  '/:id',
   requestController.deleteTask,
   (req, res) => {
     return res.status(200).json(res.locals.tasks);
@@ -20,7 +20,7 @@ router.delete(
 );
 
 // get tasks route
-router.get('/tasks', requestController.getTasks, (req, res) => {
+router.get('/', requestController.getTasks, (req, res) => {
   return res.status(200).json(res.locals.tasks);
 });
 

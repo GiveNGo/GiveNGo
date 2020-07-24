@@ -53,11 +53,13 @@
     "@types/react-router-native": "^5.1.0",
     "@types/socket.io-client": "^1.4.33",
     "concurrently": "^5.2.0",
+    "crypto-js": "^4.0.0",
     "nodemon": "^2.0.4",
     "react-native-gifted-chat": "^0.16.3",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
-    "typescript": "~3.9.5"
+    "typescript": "~3.9.5",
+    "websockets": "^0.2.0"
   },
   "private": true
 }

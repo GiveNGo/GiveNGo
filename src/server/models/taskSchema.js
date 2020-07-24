@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const taskSchema = mongoose.Schema({
   owner: {
-    type: mongoose.Types.ObjectId,
+    type: String,
     require: true,
     ref: 'User',
   },
   assignee: {
-    type: mongoose.Types.ObjectId,
+    type: String,
     require: true,
     ref: 'User',
   },

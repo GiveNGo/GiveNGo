@@ -10,8 +10,15 @@ authController.signUpUser = async (
   res,
   next
 ) => {
+  console.log('INSIDE SIGNUP USER')
   // Destructure username/accessToken from req.user
   const { username, email, password } = req.body;
+
+  const checkEmail = await User.collection.findOne({
+    "email": email
+  })
+
+  if(checkEmail) res.redirect('/fail')
 
   // CryptoJS -> encrypt password with AES and a "super_secret" password
   const encrypted = CryptoJS.AES.encrypt(
@@ -25,7 +32,7 @@ authController.signUpUser = async (
     email: email,
     password: encrypted,
     karma: 0,
-    tasks: []
+    // tasks: []
   })
 
   res.locals.newUser = newUser;
@@ -41,22 +48,20 @@ authController.signUpUser = async (
   return next();
 };
 
-// Middleware to get username and access token from cookies and store each in locals
 authController.loginUser = async (
   req,
   res,
   next
 ) => {
-  // Destructure username and token from cookies
   const { username, email, password } = req.body;
 
   const possibleUser = await User.collection.findOne({
-    "username": username,
-  })
+    "username": username
+  });
 
   if (!possibleUser) res.redirect('/fail');
 
-  res.locals.possibleUser = possibleUser
+  res.locals.possibleUser = possibleUser;
 
   const dbPwd = CryptoJS.AES.decrypt(possibleUser.password, "super_secret").toString(
     CryptoJS.enc.Utf8

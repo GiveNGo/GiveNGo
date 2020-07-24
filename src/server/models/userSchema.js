@@ -26,22 +26,22 @@ const userSchema = mongoose.Schema({
   ],
 });
 
-const User = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
 
-const testUser = {
-  username: 'cherie',
-  email: 'cherie@codesmith.io',
-  password: '123',
-  karma: 5,
-  // tasks: [],
-};
+// const testUser = {
+//   username: 'cherie',
+//   email: 'cherie@codesmith.io',
+//   password: '123',
+//   karma: 5,
+//   // tasks: [],
+// };
 
-const newTest = new User(testUser);
+// const newTest = new User(testUser);
 
-newTest.save((err) => {
-  if (err) {
-    console.log(err);
-  } else console.log('added to DB');
-});
+// newTest.save((err) => {
+//   if (err) {
+//     console.log(err);
+//   } else console.log('added to DB');
+// });
 
-module.exports = User;
+// module.exports = User;
