@@ -17,17 +17,9 @@ import {
   setCurrentTask,
 } from '../Reducer/actions';
 
-<<<<<<< HEAD
 export default function ExplorePage({ navigation }: any): React.ReactElement {
   const dispatch = useDispatch();
-  const state = useSelector((state: any) => state);
-=======
-
-export default function ExplorePage ({ navigation }: any): React.ReactElement {
-  const dispatch = useDispatch()
-  const store = useSelector((state: any) => state.main)
-  
->>>>>>> master
+  const store = useSelector((state: any) => state.main);
   const [region, setRegion] = useState({
     latitude: 33.987789,
     longitude: -118.470587,

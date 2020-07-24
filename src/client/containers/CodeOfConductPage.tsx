@@ -25,7 +25,6 @@ const CodeOfConductPage = ({ navigation }: any) => {
     <ScrollView>
       <Layout
         style={{
-          flex: 1,
           justifyContent: 'center',
           backgroundColor: 'white-ish',
         }}
@@ -81,8 +80,8 @@ const CodeOfConductPage = ({ navigation }: any) => {
 
 const styles = StyleSheet.create({
   card: {
-    margin: 2,
-    height: '100%',
+    margin: 5,
+    // height: '100%',
     borderColor: 'transparent',
   },
   text: {
